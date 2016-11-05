@@ -1,0 +1,7 @@
+config BR2_PACKAGE_LIBRETRO_PCSX_REARMED
+	bool "libretro-pcsx-rearmed"
+	depends on BR2_PACKAGE_RETROARCH
+	help
+	  Libretro implementation of PCSX-ReARMed (PSX)
+
+	  https://github.com/libretro/pcsx_rearmed

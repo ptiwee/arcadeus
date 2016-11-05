@@ -1,0 +1,7 @@
+config BR2_PACKAGE_LIBRETRO_BEETLE_NGP
+	bool "libretro-beetle-ngp"
+	depends on BR2_PACKAGE_RETROARCH
+	help
+	  Libretro implementation of Beetle-NGP (NeoGeo Pocket, NeoGeo Color)
+
+	  https://github.com/libretro/beetle-ngp-libretro

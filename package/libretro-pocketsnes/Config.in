@@ -1,0 +1,7 @@
+config BR2_PACKAGE_LIBRETRO_POCKETSNES
+	bool "libretro-pocketsnes"
+	depends on BR2_PACKAGE_RETROARCH
+	help
+	  Libretro implementation of PocketSNES (SNES)
+
+	  https://github.com/libretro/snes9x2002

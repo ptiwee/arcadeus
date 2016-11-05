@@ -1,0 +1,7 @@
+config BR2_PACKAGE_LIBRETRO_NESTOPIA
+	bool "libretro-nestopia"
+	depends on BR2_PACKAGE_RETROARCH
+	help
+	  Libretro implementation of Nestopia (NES)
+
+	  https://github.com/libretro/nestopia

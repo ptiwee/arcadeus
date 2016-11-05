@@ -1,0 +1,7 @@
+config BR2_PACKAGE_LIBRETRO_FBA
+	bool "libretro-fba"
+	depends on BR2_PACKAGE_RETROARCH
+	help
+	  Libretro implementation of Final Burn Alpha (NeoGeo, Mame)
+
+	  https://github.com/libretro/fbalpha
