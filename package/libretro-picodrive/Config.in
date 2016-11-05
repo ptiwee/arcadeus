@@ -1,0 +1,7 @@
+config BR2_PACKAGE_LIBRETRO_PICODRIVE
+	bool "libretro-picodrive"
+	depends on BR2_PACKAGE_RETROARCH
+	help
+	  Libretro implementation of PicoDrive (Master System, Megadrive)
+
+	  https://github.com/libretro/picodrive

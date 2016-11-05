@@ -1,0 +1,7 @@
+config BR2_PACKAGE_LIBRETRO_GENESISPLUSGX
+	bool "libretro-genesisplusgx"
+	depends on BR2_PACKAGE_RETROARCH
+	help
+	  Libretro implementation of Genesis Plus GX (GameGear)
+
+	  https://github.com/libretro/Genesis-Plus-GX
