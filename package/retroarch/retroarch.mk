@@ -7,7 +7,7 @@
 RETROARCH_VERSION = v1.3.6
 RETROARCH_SITE = https://github.com/libretro/RetroArch.git
 RETROARCH_SITE_METHOD = git
-RETROARCH_DEPENDENCIES = host-pkgconf
+RETROARCH_DEPENDENCIES = host-pkgconf zlib
 
 RETROARCH_CONF_OPTS += --disable-sdl
 RETROARCH_CONF_OPTS += --disable-oss
@@ -17,10 +17,10 @@ RETROARCH_CONF_OPTS += --disable-networking
 RETROARCH_CONF_OPTS += --disable-netplay
 RETROARCH_CONF_OPTS += --disable-pulse
 RETROARCH_CONF_OPTS += --disable-libxml2
-RETROARCH_CONF_OPTS += --disable-zlib
 RETROARCH_CONF_OPTS += --disable-freetype
 RETROARCH_CONF_OPTS += --disable-sdl
 RETROARCH_CONF_OPTS += --disable-cheevos
+RETROARCH_CONF_OPTS += --enable-zlib
 
 ifeq ($(BR2_PACKAGE_ALSA_LIB),y)
 	RETROARCH_CONF_OPTS += --enable-alsa
