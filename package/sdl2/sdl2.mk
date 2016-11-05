@@ -19,8 +19,14 @@ SDL2_CONF_OPTS += \
 	--disable-dbus \
 	--disable-pulseaudio \
 	--disable-video-opengl \
-	--disable-video-opengles \
 	--disable-video-wayland
+
+ifeq ($(BR2_PACKAGE_HAS_LIBGLES),y)
+SDL2_DEPENDENCIES += $(LIBGLES_DEPENDENCIES)
+SDL2_CONF_OPTS += --enable-video-opengles
+else
+SDL2_CONF_OPTS += --disable-video-opengles
+endif
 
 # We must enable static build to get compilation successful.
 SDL2_CONF_OPTS += --enable-static
