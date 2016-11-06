@@ -4,6 +4,7 @@ menu "Target packages"
 	source "package/skeleton/Config.in"
 
 menu "Arcadeus"
+	source "package/attractmode/Config.in"
 	source "package/retroarch/Config.in"
 	source "package/libretro-beetle-ngp/Config.in"
 	source "package/libretro-fba/Config.in"

@@ -1,0 +1,23 @@
+Makefile: update GLES version
+
+Switch from GLESv1 to GLESv2
+---
+ Makefile | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/Makefile b/Makefile
+index 9330bea..5ff397e 100644
+--- a/Makefile
++++ b/Makefile
+@@ -236,7 +236,7 @@ ifneq ($(NO_SWF),1)
+   ifneq ($(FE_MACOSX_COMPILE),1)
+    CFLAGS += -Wl,--export-dynamic
+    ifeq ($(USE_GLES),1)
+-    LIBS += -ldl -lGLESv1_CM
++    LIBS += -ldl -lGLESv2
+    else
+     LIBS += -ldl -lGL
+    endif
+-- 
+2.10.2
+
