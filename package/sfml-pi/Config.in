@@ -1,0 +1,13 @@
+config BR2_PACKAGE_SFML_PI
+	bool "sfml-pi"
+	depends on BR2_PACKAGE_HAS_UDEV
+	select BR2_PACKAGE_JPEG
+	select BR2_PACKAGE_OPENAL
+	select BR2_PACKAGE_FLAC
+	select BR2_PACKAGE_LIBVORBIS
+	select BR2_PACKAGE_FREETYPE
+	help
+	  SFML for the Raspberry Pi (w/ hardware accelerated graphics
+	  and no X dependency)
+
+	  http://github.com/mickelson/sfml-pi
