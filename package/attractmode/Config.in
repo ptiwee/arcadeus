@@ -1,0 +1,11 @@
+config BR2_PACKAGE_ATTRACTMODE
+	bool "attractmode"
+	depends on BR2_PACKAGE_SFML_PI
+	depends on BR2_PACKAGE_FFMPEG
+	depends on BR2_PACKAGE_FFMPEG_SWSCALE
+	help
+	  A graphical front-end for command line emulators that hides
+	  the underlying operating system and is intended to be
+	  controlled with a joystick or gamepad.
+
+	  https://github.com/mickelson/attract
