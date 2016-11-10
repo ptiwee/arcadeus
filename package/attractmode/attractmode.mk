@@ -15,6 +15,7 @@ endef
 
 define ATTRACTMODE_INSTALL_TARGET_CMDS
 	$(MAKE) PKG_CONFIG="$(PKG_CONFIG_HOST_BINARY)" LD="$(TARGET_LD)" USE_GLES=1 -C $(@D) prefix=$(TARGET_DIR)/usr install
+	cp -r package/attractmode/Flat $(TARGET_DIR)/usr/share/attract/layouts/
 endef
 	
 $(eval $(generic-package))
