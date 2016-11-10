@@ -16,6 +16,7 @@ menu "Arcadeus"
 	source "package/libretro-pcsx-rearmed/Config.in"
 	source "package/libretro-picodrive/Config.in"
 	source "package/libretro-pocketsnes/Config.in"
+	source "package/mk_arcade_joystick_rpi/Config.in"
 endmenu
 
 menu "Audio and video applications"
