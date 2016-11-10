@@ -26,7 +26,10 @@ case "$1" in
 
         rm -r $attractdir/*
         mkdir $attractdir/romlists
+	mkdir $attractdir/emulators
         touch $attractdir/attract.cfg
+
+	cp /usr/share/attract/emulators/* $attractdir/emulators/
 
         # General configuration
         echo -e "general" >> $attractdir/attract.cfg
