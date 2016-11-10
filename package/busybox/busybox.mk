@@ -58,6 +58,11 @@ define BUSYBOX_PERMISSIONS
 	/bin/busybox                     f 4755 0  0 - - - - -
 endef
 
+define BUSYBOX_INSTALL_WAITFORUSB_SCRIPT
+	$(INSTALL) -D -m 0755 package/busybox/S25waitforusb \
+		$(TARGET_DIR)/etc/init.d/S25waitforusb
+endef
+	
 # If mdev will be used for device creation enable it and copy S10mdev to /etc/init.d
 ifeq ($(BR2_ROOTFS_DEVICE_CREATION_DYNAMIC_MDEV),y)
 define BUSYBOX_INSTALL_MDEV_SCRIPT
@@ -236,6 +241,7 @@ define BUSYBOX_INSTALL_TARGET_CMDS
 	$(BUSYBOX_MAKE_ENV) $(MAKE) $(BUSYBOX_MAKE_OPTS) -C $(@D) install
 	$(BUSYBOX_INSTALL_INITTAB)
 	$(BUSYBOX_INSTALL_UDHCPC_SCRIPT)
+	$(BUSYBOX_INSTALL_WAITFORUSB_SCRIPT)
 	$(BUSYBOX_INSTALL_MDEV_CONF)
 endef
 

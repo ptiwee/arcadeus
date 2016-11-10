@@ -1,0 +1,87 @@
+#!/bin/sh
+# Script to scan USB device and generate attractmode romlists
+#
+platforms="arcade|zip
+nes|nes
+snes|sfc
+n64|n64
+gameboy|gb
+gbc|gbc
+gba|gba
+sms|sms
+megadrive|md
+gamegear|gg
+neogeo|zip
+ngpx|ngc
+playstation|bin"
+romsdir=/mnt/usb
+attractdir=/mnt/attract
+
+IFS="
+"
+
+case "$1" in
+    start)
+        echo "Generating AttractMode romlist"
+
+        rm -r $attractdir/*
+        mkdir $attractdir/romlists
+        touch $attractdir/attract.cfg
+
+        # General configuration
+        echo -e "general" >> $attractdir/attract.cfg
+        echo -e "\tdefault_font\tDejaVuSans" >> $attractdir/attract.cfg
+        echo -e "input_map" >> $attractdir/attract.cfg
+        echo -e "\tdefault\tup\tprev_display" >> $attractdir/attract.cfg
+        echo -e "\tdefault\tdown\tnext_display" >> $attractdir/attract.cfg
+        echo -e "\tdefault\tleft\tprev_game" >> $attractdir/attract.cfg
+        echo -e "\tdefault\tright\tnext_game" >> $attractdir/attract.cfg
+
+        for info in $platforms
+        do
+            platform=$(echo "$info" | cut -d\| -f1)
+            platform_ext=$(echo "$info" | cut -d\| -f2)
+
+            for rom in `ls -1v $romsdir/$platform/*.$platform_ext`
+            do
+                if [ -f "$rom" ]; then
+                    ext=$(basename "$rom" | sed "s/^.*\.\(.*$\)$/\1/")
+                    basename=$(basename "$rom")
+                    name=$(echo "$basename" | sed "s/^\(.*\)\..*$/\1/")
+                    valid=1
+
+                    if [ -f "$romsdir/$platform/$name.txt" ]; then
+                        # Extract informations from txt file
+                        title=$(cat "$romsdir/$platform/$name.txt" | sed -n '1p')
+                        manufacturer=$(cat "$romsdir/$platform/$name.txt" | sed -n '2p')
+                        extra=$(cat "$romsdir/$platform/$name.txt" | sed -n '3p')
+                    else
+                        title=$(echo $name | sed "s/\([^(\[]*\).*$/\1/" | sed "s/\s*$//g")
+                        manufacturer=""
+                        extra=""
+                    fi
+
+                    if [ -f $romsdir/$platform/blacklist.txt ]; then
+                        grep -q "$basename" $romsdir/$platform/blacklist.txt
+                        if [ $? == 0 ]; then
+                            valid=0
+                        fi
+                    fi
+
+                    if [ $valid == 1 ]; then
+                        echo "$name;$title;$platform;;;$manufacturer;;;;;;;;;;$extra" >> "$attractdir/romlists/$platform.txt"
+                    fi
+                fi
+            done
+
+            if [ -f $attractdir/romlists/$platform.txt ]; then
+                # At least 1 rom found, create attract display
+                echo -e "display $platform" >> $attractdir/attract.cfg
+                echo -e "\tlayout\tNewFlat" >> $attractdir/attract.cfg
+                echo -e "\tromlist\t$platform" >> $attractdir/attract.cfg
+            fi
+        done
+        ;;
+    stop)
+        ;;
+esac
