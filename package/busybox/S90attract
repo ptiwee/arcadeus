@@ -77,7 +77,7 @@ case "$1" in
             if [ -f $attractdir/romlists/$platform.txt ]; then
                 # At least 1 rom found, create attract display
                 echo -e "display $platform" >> $attractdir/attract.cfg
-                echo -e "\tlayout\tNewFlat" >> $attractdir/attract.cfg
+                echo -e "\tlayout\tFlat" >> $attractdir/attract.cfg
                 echo -e "\tromlist\t$platform" >> $attractdir/attract.cfg
             fi
         done
