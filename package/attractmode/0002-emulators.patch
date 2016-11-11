@@ -40,11 +40,11 @@ index 0000000..ecce55a
 @@ -0,0 +1,7 @@
 +executable  retroarch
 +args        "[romfilename]" -L /usr/lib/libretro/libretro_fba.so
-+rompath     /mnt/usb/arcade
++rompath     /mnt/arcade
 +romext      .zip
-+artwork     flyer   /mnt/usb/arcade/flyer
-+artwork     wheel   /mnt/usb/arcade/wheel
-+artwork     snap    /mnt/usb/arcade/snap
++artwork     flyer   /mnt/arcade/flyer
++artwork     wheel   /mnt/arcade/wheel
++artwork     snap    /mnt/arcade/snap
 diff --git a/config/emulators/gameboy.cfg b/config/emulators/gameboy.cfg
 new file mode 100644
 index 0000000..1e4b8ce
@@ -53,11 +53,11 @@ index 0000000..1e4b8ce
 @@ -0,0 +1,7 @@
 +executable  retroarch
 +args        "[romfilename]" -L /usr/lib/libretro/libretro_gambatte.so
-+rompath     /mnt/usb/gameboy
++rompath     /mnt/gameboy
 +romext      .gb
-+artwork     flyer   /mnt/usb/gameboy/flyer
-+artwork     wheel   /mnt/usb/gameboy/wheel
-+artwork     snap    /mnt/usb/gameboy/snap
++artwork     flyer   /mnt/gameboy/flyer
++artwork     wheel   /mnt/gameboy/wheel
++artwork     snap    /mnt/gameboy/snap
 diff --git a/config/emulators/gamegear.cfg b/config/emulators/gamegear.cfg
 new file mode 100644
 index 0000000..e89d9a9
@@ -66,11 +66,11 @@ index 0000000..e89d9a9
 @@ -0,0 +1,7 @@
 +executable  retroarch
 +args        "[romfilename]" -L /usr/lib/libretro/libretro_genesisplusgx.so
-+rompath     /mnt/usb/gamegear
++rompath     /mnt/gamegear
 +romext      .gg
-+artwork     flyer   /mnt/usb/gamegear/flyer
-+artwork     wheel   /mnt/usb/gamegear/wheel
-+artwork     snap    /mnt/usb/gamegear/snap
++artwork     flyer   /mnt/gamegear/flyer
++artwork     wheel   /mnt/gamegear/wheel
++artwork     snap    /mnt/gamegear/snap
 diff --git a/config/emulators/gba.cfg b/config/emulators/gba.cfg
 new file mode 100644
 index 0000000..e77b5a8
@@ -79,11 +79,11 @@ index 0000000..e77b5a8
 @@ -0,0 +1,7 @@
 +executable  retroarch
 +args        "[romfilename]" -L /usr/lib/libretro/libretro_gpsp.so
-+rompath     /mnt/usb/gba
++rompath     /mnt/gba
 +romext      .gba
-+artwork     flyer   /mnt/usb/gba/flyer
-+artwork     wheel   /mnt/usb/gba/wheel
-+artwork     snap    /mnt/usb/gba/snap
++artwork     flyer   /mnt/gba/flyer
++artwork     wheel   /mnt/gba/wheel
++artwork     snap    /mnt/gba/snap
 diff --git a/config/emulators/gbc.cfg b/config/emulators/gbc.cfg
 new file mode 100644
 index 0000000..b953d97
@@ -92,11 +92,11 @@ index 0000000..b953d97
 @@ -0,0 +1,7 @@
 +executable  retroarch
 +args        "[romfilename]" -L /usr/lib/libretro/libretro_gambatte.so
-+rompath     /mnt/usb/gbc
++rompath     /mnt/gbc
 +romext      .gbc
-+artwork     flyer   /mnt/usb/gbc/flyer
-+artwork     wheel   /mnt/usb/gbc/wheel
-+artwork     snap    /mnt/usb/gbc/snap
++artwork     flyer   /mnt/gbc/flyer
++artwork     wheel   /mnt/gbc/wheel
++artwork     snap    /mnt/gbc/snap
 diff --git a/config/emulators/megadrive.cfg b/config/emulators/megadrive.cfg
 new file mode 100644
 index 0000000..fafd463
@@ -105,11 +105,11 @@ index 0000000..fafd463
 @@ -0,0 +1,7 @@
 +executable  retroarch
 +args        "[romfilename]" -L /usr/lib/libretro/libretro_picodrive.so
-+rompath     /mnt/usb/megadrive
++rompath     /mnt/megadrive
 +romext      .md
-+artwork     flyer   /mnt/usb/megadrive/flyer
-+artwork     wheel   /mnt/usb/megadrive/wheel
-+artwork     snap    /mnt/usb/megadrive/snap
++artwork     flyer   /mnt/megadrive/flyer
++artwork     wheel   /mnt/megadrive/wheel
++artwork     snap    /mnt/megadrive/snap
 diff --git a/config/emulators/n64.cfg b/config/emulators/n64.cfg
 new file mode 100644
 index 0000000..df89ca8
@@ -118,11 +118,11 @@ index 0000000..df89ca8
 @@ -0,0 +1,7 @@
 +executable  retroarch
 +args        "[romfilename]" -L /usr/lib/libretro/libretro_glupen64.so
-+rompath     /mnt/usb/n64
++rompath     /mnt/n64
 +romext      .n64
-+artwork     flyer   /mnt/usb/n64/flyer
-+artwork     wheel   /mnt/usb/n64/wheel
-+artwork     snap    /mnt/usb/n64/snap
++artwork     flyer   /mnt/n64/flyer
++artwork     wheel   /mnt/n64/wheel
++artwork     snap    /mnt/n64/snap
 diff --git a/config/emulators/neogeo.cfg b/config/emulators/neogeo.cfg
 new file mode 100644
 index 0000000..28307c3
@@ -131,11 +131,11 @@ index 0000000..28307c3
 @@ -0,0 +1,7 @@
 +executable  retroarch
 +args        "[romfilename]" -L /usr/lib/libretro/libretro_fba.so
-+rompath     /mnt/usb/neogeo
++rompath     /mnt/neogeo
 +romext      .zip
-+artwork     flyer   /mnt/usb/neogeo/flyer
-+artwork     wheel   /mnt/usb/neogeo/wheel
-+artwork     snap    /mnt/usb/neogeo/snap
++artwork     flyer   /mnt/neogeo/flyer
++artwork     wheel   /mnt/neogeo/wheel
++artwork     snap    /mnt/neogeo/snap
 diff --git a/config/emulators/nes.cfg b/config/emulators/nes.cfg
 new file mode 100644
 index 0000000..cad9ce8
@@ -144,11 +144,11 @@ index 0000000..cad9ce8
 @@ -0,0 +1,7 @@
 +executable  retroarch
 +args        "[romfilename]" -L /usr/lib/libretro/libretro_nestopia.so
-+rompath     /mnt/usb/nes
++rompath     /mnt/nes
 +romext      .nes
-+artwork     flyer   /mnt/usb/nes/flyer
-+artwork     wheel   /mnt/usb/nes/wheel
-+artwork     snap    /mnt/usb/nes/snap
++artwork     flyer   /mnt/nes/flyer
++artwork     wheel   /mnt/nes/wheel
++artwork     snap    /mnt/nes/snap
 diff --git a/config/emulators/ngpx.cfg b/config/emulators/ngpx.cfg
 new file mode 100644
 index 0000000..3fe7423
@@ -157,11 +157,11 @@ index 0000000..3fe7423
 @@ -0,0 +1,7 @@
 +executable  retroarch
 +args        "[romfilename]" -L /usr/lib/libretro/libretro_beetle_ngp.so
-+rompath     /mnt/usb/ngpx
++rompath     /mnt/ngpx
 +romext      .ngc
-+artwork     flyer   /mnt/usb/ngpx/flyer
-+artwork     wheel   /mnt/usb/ngpx/wheel
-+artwork     snap    /mnt/usb/ngpx/snap
++artwork     flyer   /mnt/ngpx/flyer
++artwork     wheel   /mnt/ngpx/wheel
++artwork     snap    /mnt/ngpx/snap
 diff --git a/config/emulators/playstation.cfg b/config/emulators/playstation.cfg
 new file mode 100644
 index 0000000..08fea3a
@@ -170,11 +170,11 @@ index 0000000..08fea3a
 @@ -0,0 +1,7 @@
 +executable  retroarch
 +args        "[romfilename]" -L /usr/lib/libretro/libretro_pcsx_rearmed.so
-+rompath     /mnt/usb/playstation
++rompath     /mnt/playstation
 +romext      .bin
-+artwork     flyer   /mnt/usb/playstation/flyer
-+artwork     wheel   /mnt/usb/playstation/wheel
-+artwork     snap    /mnt/usb/playstation/snap
++artwork     flyer   /mnt/playstation/flyer
++artwork     wheel   /mnt/playstation/wheel
++artwork     snap    /mnt/playstation/snap
 diff --git a/config/emulators/sms.cfg b/config/emulators/sms.cfg
 new file mode 100644
 index 0000000..834eec9
@@ -183,11 +183,11 @@ index 0000000..834eec9
 @@ -0,0 +1,7 @@
 +executable  retroarch
 +args        "[romfilename]" -L /usr/lib/libretro/libretro_picodrive.so
-+rompath     /mnt/usb/sms
++rompath     /mnt/sms
 +romext      .sms
-+artwork     flyer   /mnt/usb/sms/flyer
-+artwork     wheel   /mnt/usb/sms/wheel
-+artwork     snap    /mnt/usb/sms/snap
++artwork     flyer   /mnt/sms/flyer
++artwork     wheel   /mnt/sms/wheel
++artwork     snap    /mnt/sms/snap
 diff --git a/config/emulators/snes.cfg b/config/emulators/snes.cfg
 new file mode 100644
 index 0000000..0e93b61
@@ -196,11 +196,11 @@ index 0000000..0e93b61
 @@ -0,0 +1,7 @@
 +executable  retroarch
 +args        "[romfilename]" -L /usr/lib/libretro/libretro_pocketsnes.so
-+rompath     /mnt/usb/snes
++rompath     /mnt/snes
 +romext      .sfc
-+artwork     flyer   /mnt/usb/snes/flyer
-+artwork     wheel   /mnt/usb/snes/wheel
-+artwork     snap    /mnt/usb/snes/snap
++artwork     flyer   /mnt/snes/flyer
++artwork     wheel   /mnt/snes/wheel
++artwork     snap    /mnt/snes/snap
 -- 
 2.10.2
 
