@@ -4,13 +4,19 @@
 #
 ###############################################################################
 
-ATTRACTMODE_VERSION = v2.1.0
+ATTRACTMODE_VERSION = v2.2.0
 ATTRACTMODE_SITE = https://github.com/mickelson/attract.git
 ATTRACTMODE_SITE_METHOD = git
 ATTRACTMODE_DEPENDENCIES = sfml-pi ffmpeg
 
 define ATTRACTMODE_BUILD_CMDS
-	CFLAGS="$(TARGET_CFLAGS)" CXXFLAGS="$(TARGET_CXXFLAGS)" $(MAKE) PKG_CONFIG="$(PKG_CONFIG_HOST_BINARY)" STRIP="$(TARGET_STRIP)" CXX="$(TARGET_CXX)" CC="$(TARGET_CC)" LD="$(TARGET_LD)" USE_GLES=1 -C $(@D) prefix=/usr
+	CFLAGS="$(TARGET_CFLAGS)" \
+	CXXFLAGS="$(TARGET_CXXFLAGS)" \
+	$(MAKE) PKG_CONFIG="$(PKG_CONFIG_HOST_BINARY)" \
+	STRIP="$(TARGET_STRIP)" \
+	CXX="$(TARGET_CXX)" CC="$(TARGET_CC)" \
+	LD="$(TARGET_LD)" \
+	USE_GLES=1 -C $(@D) prefix=/usr
 endef
 
 define ATTRACTMODE_INSTALL_TARGET_CMDS
