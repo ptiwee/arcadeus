@@ -344,9 +344,13 @@ function on_transition(ttype, var, ttime) {
 
     /* Continue conveyor */
     if (ttype == Transition.FromOldSelection) {
-		if (fe.get_input_state("Left")) {
+		if (fe.get_input_state("Left") ||
+            fe.get_input_state("Joy0 Left") ||
+            fe.get_input_state("Joy1 Left")) {
 			fe.signal("prev_game");
-		} else if (fe.get_input_state("Right")) {
+		} else if (fe.get_input_state("Right") ||
+            fe.get_input_state("Joy0 Right") ||
+            fe.get_input_state("Joy1 Right")) {
 			fe.signal("next_game");
         }
     }
