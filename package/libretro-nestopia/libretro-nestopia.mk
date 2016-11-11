@@ -4,7 +4,7 @@
 #
 ###############################################################################
 
-LIBRETRO_NESTOPIA_VERSION = master
+LIBRETRO_NESTOPIA_VERSION = 70f4705
 LIBRETRO_NESTOPIA_SITE = https://github.com/libretro/nestopia.git
 LIBRETRO_NESTOPIA_SITE_METHOD = git
 LIBRETRO_NESTOPIA_DEPENDENCIES = retroarch
@@ -20,7 +20,12 @@ ifeq ($(BR2_cortex_a8),y)
 endif
 
 define LIBRETRO_NESTOPIA_BUILD_CMDS
-	CFLAGS="$(TARGET_CFLAGS)" CXXFLAGS="$(TARGET_CXXFLAGS)" $(MAKE) CXX="$(TARGET_CXX)" CC="$(TARGET_CC)" LD="$(TARGET_LD)" -C $(@D)/libretro platform="$(LIBRETRO_NESTOPIA_PLATFORM)"
+	CFLAGS="$(TARGET_CFLAGS)" \
+	CXXFLAGS="$(TARGET_CXXFLAGS)" \
+	$(MAKE) CXX="$(TARGET_CXX)" \
+	CC="$(TARGET_CC)" \
+	LD="$(TARGET_LD)" \
+	-C $(@D)/libretro platform="$(LIBRETRO_NESTOPIA_PLATFORM)"
 endef
 
 define LIBRETRO_NESTOPIA_INSTALL_TARGET_CMDS

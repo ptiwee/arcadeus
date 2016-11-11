@@ -4,7 +4,7 @@
 #
 ################################################################################
 
-SFML_PI_VERSION = master
+SFML_PI_VERSION = 70bab6f
 SFML_PI_SITE = https://github.com/mickelson/sfml-pi.git
 SFML_PI_SITE_METHOD = git
 

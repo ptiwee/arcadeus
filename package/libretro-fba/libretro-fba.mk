@@ -4,7 +4,7 @@
 #
 ###############################################################################
 
-LIBRETRO_FBA_VERSION = master
+LIBRETRO_FBA_VERSION = 0d122c3
 LIBRETRO_FBA_SITE = https://github.com/libretro/fbalpha.git
 LIBRETRO_FBA_SITE_METHOD = git
 LIBRETRO_FBA_DEPENDENCIES = retroarch
@@ -20,7 +20,11 @@ ifeq ($(BR2_cortex_a8),y)
 endif
 
 define LIBRETRO_FBA_BUILD_CMDS
-	CFLAGS="$(TARGET_CFLAGS)" CXXFLAGS="$(TARGET_CXXFLAGS)" $(MAKE) CXX="$(TARGET_CXX)" CC="$(TARGET_CC)" LD="$(TARGET_LD)" -C $(@D) -f makefile.libretro platform="$(LIBRETRO_FBA_PLATFORM)"
+	CFLAGS="$(TARGET_CFLAGS)" \
+	CXXFLAGS="$(TARGET_CXXFLAGS)" \
+	$(MAKE) CXX="$(TARGET_CXX)" \
+	CC="$(TARGET_CC)" LD="$(TARGET_LD)" \
+	-C $(@D) -f makefile.libretro platform="$(LIBRETRO_FBA_PLATFORM)"
 endef
 
 define LIBRETRO_FBA_INSTALL_TARGET_CMDS
