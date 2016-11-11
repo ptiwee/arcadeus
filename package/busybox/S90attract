@@ -14,7 +14,8 @@ gamegear|gg
 neogeo|zip
 ngpx|ngc
 playstation|bin"
-romsdir=/mnt/
+
+romsdir=/mnt
 attractdir=/mnt/attract
 
 IFS="
@@ -45,12 +46,21 @@ case "$1" in
             platform=$(echo "$info" | cut -d\| -f1)
             platform_ext=$(echo "$info" | cut -d\| -f2)
 
-            sum=$(ls -l $romsdir/$platform | md5sum)
-            oldsum=$(sed '$s/^#\(.*\)/\1/' "$attractdir/romlists/$platform.txt | tail -n1")
+            if [ -d $romsdir/$platform ]; then
+                sum=$(ls -l $romsdir/$platform | md5sum)
+            else
+                sum="00000000000000000000000000000000"
+            fi
+
+            if [ -e "$attractdir/romlists/$platform.txt" ]; then
+                oldsum=$(sed '$s/^#\(.*\)/\1/' "$attractdir/romlists/$platform.txt" | tail -n1)
+            else
+                oldsum="11111111111111111111111111111111"
+            fi
 
             if [ "$sum" != "$oldsum" ]; then
                 # Remove old configuration
-                sed -ie '/display $platform/{N;N;N;d}' $attractdir/attract.cfg
+                sed -i -e '/display $platform/{N;N;N;d}' $attractdir/attract.cfg
 
                 for rom in `ls -1v $romsdir/$platform/*.$platform_ext`
                 do
