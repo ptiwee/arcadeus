@@ -35,6 +35,8 @@ endef
 
 define MK_ARCADE_JOYSTICK_RPI_INSTALL_TARGET_CMDS
         $(MAKE) -C $(@D) $(LINUX_MAKE_FLAGS) KERNELDIR=$(LINUX_DIR) modules_install
+        $(INSTALL) -D -m 0755 package/mk_arcade_joystick_rpi/S95joystick \
+            $(TARGET_DIR)/etc/init.d/S95joystick
 endef
 
 $(eval $(generic-package))
