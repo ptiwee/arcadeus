@@ -4,7 +4,7 @@
 #
 ###############################################################################
 
-LIBRETRO_GAMBATTE_VERSION = master
+LIBRETRO_GAMBATTE_VERSION = c20901a
 LIBRETRO_GAMBATTE_SITE = https://github.com/libretro/gambatte-libretro.git
 LIBRETRO_GAMBATTE_SITE_METHOD = git
 LIBRETRO_GAMBATTE_DEPENDENCIES = retroarch
@@ -25,7 +25,12 @@ ifeq ($(BR2_cortex_a8),y)
 endif
 
 define LIBRETRO_GAMBATTE_BUILD_CMDS
-	CFLAGS="$(TARGET_CFLAGS)" CXXFLAGS="$(TARGET_CXXFLAGS)" $(MAKE) CXX="$(TARGET_CXX)" CC="$(TARGET_CC)" LD="$(TARGET_LD)" -C $(@D) -f Makefile.libretro platform="$(LIBRETRO_GAMBATTE_PLATFORM)"
+	CFLAGS="$(TARGET_CFLAGS)" \
+	CXXFLAGS="$(TARGET_CXXFLAGS)" \
+	$(MAKE) CXX="$(TARGET_CXX)" \
+	CC="$(TARGET_CC)" \
+	LD="$(TARGET_LD)" \
+	-C $(@D) -f Makefile.libretro platform="$(LIBRETRO_GAMBATTE_PLATFORM)"
 endef
 
 define LIBRETRO_GAMBATTE_INSTALL_TARGET_CMDS

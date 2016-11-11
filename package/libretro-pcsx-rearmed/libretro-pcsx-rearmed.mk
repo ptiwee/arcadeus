@@ -4,7 +4,7 @@
 #
 ###############################################################################
 
-LIBRETRO_PCSX_REARMED_VERSION = master
+LIBRETRO_PCSX_REARMED_VERSION = 6cdf212
 LIBRETRO_PCSX_REARMED_SITE = https://github.com/libretro/pcsx_rearmed.git
 LIBRETRO_PCSX_REARMED_SITE_METHOD = git
 LIBRETRO_PCSX_REARMED_DEPENDENCIES = retroarch
@@ -25,7 +25,12 @@ ifeq ($(BR2_cortex_a8),y)
 endif
 
 define LIBRETRO_PCSX_REARMED_BUILD_CMDS
-	CFLAGS="$(TARGET_CFLAGS)" CXXFLAGS="$(TARGET_CXXFLAGS)" $(MAKE) CXX="$(TARGET_CXX)" CC="$(TARGET_CC)" LD="$(TARGET_LD)" -C $(@D) -f Makefile.libretro platform="$(LIBRETRO_PCSX_REARMED_PLATFORM)"
+	CFLAGS="$(TARGET_CFLAGS)" \
+	CXXFLAGS="$(TARGET_CXXFLAGS)" \
+	$(MAKE) CXX="$(TARGET_CXX)" \
+	CC="$(TARGET_CC)" \
+	LD="$(TARGET_LD)" \
+	-C $(@D) -f Makefile.libretro platform="$(LIBRETRO_PCSX_REARMED_PLATFORM)"
 endef
 
 define LIBRETRO_PCSX_REARMED_INSTALL_TARGET_CMDS

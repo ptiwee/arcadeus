@@ -4,15 +4,33 @@
 #
 ###############################################################################
 
-LIBRETRO_GLUPEN64_VERSION = master
+LIBRETRO_GLUPEN64_VERSION = 983f2f2
 LIBRETRO_GLUPEN64_SITE = https://github.com/loganmc10/GLupeN64
 LIBRETRO_GLUPEN64_SITE_METHOD = git
 LIBRETRO_GLUPEN64_DEPENDENCIES = retroarch
 
-LIBRETRO_GLUPEN64_PLATFORM += rpi3
+# Raspberry Pi Zero and 1
+ifeq ($(BR2_arm1176jzf_s),y)
+	LIBRETRO_GLUPEN64_PLATFORM += rpi1
+endif
+
+#Raspberry Pi 2
+ifeq ($(BR2_cortex_a7),y)
+	LIBRETRO_GLUPEN64_PLATFORM += rpi2
+endif
+
+#Raspberry Pi 3
+ifeq ($(BR2_cortex_a8),y)
+	LIBRETRO_GLUPEN64_PLATFORM += rpi3
+endif
 
 define LIBRETRO_GLUPEN64_BUILD_CMDS
-	CFLAGS="$(TARGET_CFLAGS)" CXXFLAGS="$(TARGET_CXXFLAGS)" $(MAKE) CXX="$(TARGET_CXX)" CC="$(TARGET_CC)" LD="$(TARGET_LD)" -C $(@D) platform="$(LIBRETRO_GLUPEN64_PLATFORM)"
+	CFLAGS="$(TARGET_CFLAGS)" \
+	CXXFLAGS="$(TARGET_CXXFLAGS)" \
+	$(MAKE) CXX="$(TARGET_CXX)" \
+	CC="$(TARGET_CC)" \
+	LD="$(TARGET_LD)" \
+	-C $(@D) platform="$(LIBRETRO_GLUPEN64_PLATFORM)"
 endef
 
 define LIBRETRO_GLUPEN64_INSTALL_TARGET_CMDS
