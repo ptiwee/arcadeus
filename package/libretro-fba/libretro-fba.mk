@@ -4,7 +4,7 @@
 #
 ###############################################################################
 
-LIBRETRO_FBA_VERSION = 0d122c3
+LIBRETRO_FBA_VERSION = a1151b3
 LIBRETRO_FBA_SITE = https://github.com/libretro/fbalpha.git
 LIBRETRO_FBA_SITE_METHOD = git
 LIBRETRO_FBA_DEPENDENCIES = retroarch
