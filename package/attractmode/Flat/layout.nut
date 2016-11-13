@@ -98,21 +98,21 @@ local conv_bg = fe.add_text("", 0, SNAP_HEIGHT, CONV_WIDTH, CONV_HEIGHT);
 
 /* Controls */
 local btn_left_right = fe.add_image("btn_left_right.png", 2*SCREEN_WIDTH/5, SNAP_HEIGHT+CONV_HEIGHT+BORDER, CONTROLS_WIDTH, CONTROLS_HEIGHT);
-local txt_left_right = fe.add_text("JEU", 2*SCREEN_WIDTH/5 + CONTROLS_WIDTH, SNAP_HEIGHT+CONV_HEIGHT+BORDER, SCREEN_WIDTH/5 - CONTROLS_WIDTH, CONTROLS_HEIGHT);
+local txt_left_right = fe.add_text("GAME", 2*SCREEN_WIDTH/5 + CONTROLS_WIDTH, SNAP_HEIGHT+CONV_HEIGHT+BORDER, SCREEN_WIDTH/5 - CONTROLS_WIDTH, CONTROLS_HEIGHT);
 txt_left_right.align = Align.Left;
 txt_left_right.charsize = SCREEN_HEIGHT/38;
 txt_left_right.font = "BebasNeueBold";
 txt_left_right.set_rgb(124, 137, 144);
 
 local btn_up_down = fe.add_image("btn_up_down.png", 3*SCREEN_WIDTH/5, SNAP_HEIGHT+CONV_HEIGHT+BORDER, CONTROLS_WIDTH, CONTROLS_HEIGHT);
-local txt_up_down = fe.add_text("CONSOLE", 3*SCREEN_WIDTH/5 + CONTROLS_WIDTH, SNAP_HEIGHT+CONV_HEIGHT+BORDER, SCREEN_WIDTH/5 - CONTROLS_WIDTH, CONTROLS_HEIGHT);
+local txt_up_down = fe.add_text("SYSTEM", 3*SCREEN_WIDTH/5 + CONTROLS_WIDTH, SNAP_HEIGHT+CONV_HEIGHT+BORDER, SCREEN_WIDTH/5 - CONTROLS_WIDTH, CONTROLS_HEIGHT);
 txt_up_down.align = Align.Left;
 txt_up_down.charsize = SCREEN_HEIGHT/38;
 txt_up_down.font = "BebasNeueBold";
 txt_up_down.set_rgb(124, 137, 144);
 
 local btn_a = fe.add_image("btn_a.png", 4*SCREEN_WIDTH/5, SNAP_HEIGHT+CONV_HEIGHT+BORDER, CONTROLS_WIDTH, CONTROLS_HEIGHT);
-local txt_a = fe.add_text("JOUER", 4*SCREEN_WIDTH/5 + CONTROLS_WIDTH, SNAP_HEIGHT+CONV_HEIGHT+BORDER, SCREEN_WIDTH/5 - CONTROLS_WIDTH, CONTROLS_HEIGHT);
+local txt_a = fe.add_text("PLAY", 4*SCREEN_WIDTH/5 + CONTROLS_WIDTH, SNAP_HEIGHT+CONV_HEIGHT+BORDER, SCREEN_WIDTH/5 - CONTROLS_WIDTH, CONTROLS_HEIGHT);
 txt_a.align = Align.Left;
 txt_a.charsize = SCREEN_HEIGHT/38;
 txt_a.font = "BebasNeueBold";
