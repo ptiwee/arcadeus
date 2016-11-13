@@ -39,7 +39,7 @@ index 0000000..ecce55a
 +++ b/config/emulators/arcade.cfg
 @@ -0,0 +1,7 @@
 +executable  retroarch
-+args        "[romfilename]" -c /mnt/attract/retroarch.cfg -L /usr/lib/libretro/libretro_fba.so
++args        "[romfilename]" -c /mnt/retroarch/retroarch.cfg -L /usr/lib/libretro/libretro_fba.so
 +rompath     /mnt/arcade
 +romext      .zip
 +artwork     flyer   /mnt/arcade/flyer
@@ -52,7 +52,7 @@ index 0000000..1e4b8ce
 +++ b/config/emulators/gameboy.cfg
 @@ -0,0 +1,7 @@
 +executable  retroarch
-+args        "[romfilename]" -c /mnt/attract/retroarch.cfg -L /usr/lib/libretro/libretro_gambatte.so
++args        "[romfilename]" -c /mnt/retroarch/retroarch.cfg -L /usr/lib/libretro/libretro_gambatte.so
 +rompath     /mnt/gameboy
 +romext      .gb
 +artwork     flyer   /mnt/gameboy/flyer
@@ -65,7 +65,7 @@ index 0000000..e89d9a9
 +++ b/config/emulators/gamegear.cfg
 @@ -0,0 +1,7 @@
 +executable  retroarch
-+args        "[romfilename]" -c /mnt/attract/retroarch.cfg -L /usr/lib/libretro/libretro_genesisplusgx.so
++args        "[romfilename]" -c /mnt/retroarch/retroarch.cfg -L /usr/lib/libretro/libretro_genesisplusgx.so
 +rompath     /mnt/gamegear
 +romext      .gg
 +artwork     flyer   /mnt/gamegear/flyer
@@ -78,7 +78,7 @@ index 0000000..e77b5a8
 +++ b/config/emulators/gba.cfg
 @@ -0,0 +1,7 @@
 +executable  retroarch
-+args        "[romfilename]" -c /mnt/attract/retroarch.cfg -L /usr/lib/libretro/libretro_gpsp.so
++args        "[romfilename]" -c /mnt/retroarch/retroarch.cfg -L /usr/lib/libretro/libretro_gpsp.so
 +rompath     /mnt/gba
 +romext      .gba
 +artwork     flyer   /mnt/gba/flyer
@@ -91,7 +91,7 @@ index 0000000..b953d97
 +++ b/config/emulators/gbc.cfg
 @@ -0,0 +1,7 @@
 +executable  retroarch
-+args        "[romfilename]" -c /mnt/attract/retroarch.cfg -L /usr/lib/libretro/libretro_gambatte.so
++args        "[romfilename]" -c /mnt/retroarch/retroarch.cfg -L /usr/lib/libretro/libretro_gambatte.so
 +rompath     /mnt/gbc
 +romext      .gbc
 +artwork     flyer   /mnt/gbc/flyer
@@ -104,7 +104,7 @@ index 0000000..fafd463
 +++ b/config/emulators/megadrive.cfg
 @@ -0,0 +1,7 @@
 +executable  retroarch
-+args        "[romfilename]" -c /mnt/attract/retroarch.cfg -L /usr/lib/libretro/libretro_picodrive.so
++args        "[romfilename]" -c /mnt/retroarch/retroarch.cfg -L /usr/lib/libretro/libretro_picodrive.so
 +rompath     /mnt/megadrive
 +romext      .md
 +artwork     flyer   /mnt/megadrive/flyer
@@ -117,7 +117,7 @@ index 0000000..df89ca8
 +++ b/config/emulators/n64.cfg
 @@ -0,0 +1,7 @@
 +executable  retroarch
-+args        "[romfilename]" -c /mnt/attract/retroarch.cfg -L /usr/lib/libretro/libretro_glupen64.so
++args        "[romfilename]" -c /mnt/retroarch/retroarch.cfg -L /usr/lib/libretro/libretro_glupen64.so
 +rompath     /mnt/n64
 +romext      .n64
 +artwork     flyer   /mnt/n64/flyer
@@ -130,7 +130,7 @@ index 0000000..28307c3
 +++ b/config/emulators/neogeo.cfg
 @@ -0,0 +1,7 @@
 +executable  retroarch
-+args        "[romfilename]" -c /mnt/attract/retroarch.cfg -L /usr/lib/libretro/libretro_fba.so
++args        "[romfilename]" -c /mnt/retroarch/retroarch.cfg -L /usr/lib/libretro/libretro_fba.so
 +rompath     /mnt/neogeo
 +romext      .zip
 +artwork     flyer   /mnt/neogeo/flyer
@@ -143,7 +143,7 @@ index 0000000..cad9ce8
 +++ b/config/emulators/nes.cfg
 @@ -0,0 +1,7 @@
 +executable  retroarch
-+args        "[romfilename]" -c /mnt/attract/retroarch.cfg -L /usr/lib/libretro/libretro_nestopia.so
++args        "[romfilename]" -c /mnt/retroarch/retroarch.cfg -L /usr/lib/libretro/libretro_nestopia.so
 +rompath     /mnt/nes
 +romext      .nes
 +artwork     flyer   /mnt/nes/flyer
@@ -156,7 +156,7 @@ index 0000000..3fe7423
 +++ b/config/emulators/ngpx.cfg
 @@ -0,0 +1,7 @@
 +executable  retroarch
-+args        "[romfilename]" -c /mnt/attract/retroarch.cfg -L /usr/lib/libretro/libretro_beetle_ngp.so
++args        "[romfilename]" -c /mnt/retroarch/retroarch.cfg -L /usr/lib/libretro/libretro_beetle_ngp.so
 +rompath     /mnt/ngpx
 +romext      .ngc
 +artwork     flyer   /mnt/ngpx/flyer
@@ -169,7 +169,7 @@ index 0000000..08fea3a
 +++ b/config/emulators/playstation.cfg
 @@ -0,0 +1,7 @@
 +executable  retroarch
-+args        "[romfilename]" -c /mnt/attract/retroarch.cfg -L /usr/lib/libretro/libretro_pcsx_rearmed.so
++args        "[romfilename]" -c /mnt/retroarch/retroarch.cfg -L /usr/lib/libretro/libretro_pcsx_rearmed.so
 +rompath     /mnt/playstation
 +romext      .bin
 +artwork     flyer   /mnt/playstation/flyer
@@ -182,7 +182,7 @@ index 0000000..834eec9
 +++ b/config/emulators/sms.cfg
 @@ -0,0 +1,7 @@
 +executable  retroarch
-+args        "[romfilename]" -c /mnt/attract/retroarch.cfg -L /usr/lib/libretro/libretro_picodrive.so
++args        "[romfilename]" -c /mnt/retroarch/retroarch.cfg -L /usr/lib/libretro/libretro_picodrive.so
 +rompath     /mnt/sms
 +romext      .sms
 +artwork     flyer   /mnt/sms/flyer
@@ -195,7 +195,7 @@ index 0000000..0e93b61
 +++ b/config/emulators/snes.cfg
 @@ -0,0 +1,7 @@
 +executable  retroarch
-+args        "[romfilename]" -c /mnt/attract/retroarch.cfg -L /usr/lib/libretro/libretro_pocketsnes.so
++args        "[romfilename]" -c /mnt/retroarch/retroarch.cfg -L /usr/lib/libretro/libretro_pocketsnes.so
 +rompath     /mnt/snes
 +romext      .sfc
 +artwork     flyer   /mnt/snes/flyer
