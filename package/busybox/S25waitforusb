@@ -12,6 +12,8 @@ case "$1" in
     while [ ${maxwait} -gt 0 ]; do
       if [ -e "$usbdrive" ]; then
         printf "\n"
+        # Repair filesystem
+        fsck.vfat -a /dev/sda1
         mount /dev/sda1
         exit 0
       fi
