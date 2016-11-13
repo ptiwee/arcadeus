@@ -68,6 +68,12 @@ define BUSYBOX_INSTALL_ATTRACT_SCRIPT
 		$(TARGET_DIR)/etc/init.d/S90attract
 endef
 
+define BUSYBOX_INSTALL_RETROARCH_SCRIPT
+	$(INSTALL) -D -m 0755 package/busybox/S91retroarch \
+		$(TARGET_DIR)/etc/init.d/S91retroarch
+endef
+
+# If mdev will be used for device creation enable it and copy S10mdev to /etc/init.d
 # If mdev will be used for device creation enable it and copy S10mdev to /etc/init.d
 ifeq ($(BR2_ROOTFS_DEVICE_CREATION_DYNAMIC_MDEV),y)
 define BUSYBOX_INSTALL_MDEV_SCRIPT
