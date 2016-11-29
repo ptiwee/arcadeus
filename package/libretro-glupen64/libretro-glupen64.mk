@@ -4,7 +4,7 @@
 #
 ###############################################################################
 
-LIBRETRO_GLUPEN64_VERSION = 983f2f2
+LIBRETRO_GLUPEN64_VERSION = 2f6e51b
 LIBRETRO_GLUPEN64_SITE = https://github.com/loganmc10/GLupeN64
 LIBRETRO_GLUPEN64_SITE_METHOD = git
 LIBRETRO_GLUPEN64_DEPENDENCIES = retroarch
