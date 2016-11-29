@@ -1,134 +1,1004 @@
-diff --git a/src/burner/libretro/libretro.cpp b/src/burner/libretro/libretro.cpp
-index 99cf430..8499487 100644
---- a/src/burner/libretro/libretro.cpp
-+++ b/src/burner/libretro/libretro.cpp
-@@ -1871,123 +1871,31 @@ static bool init_input(void)
-          if (strncmp("fire ", szi, 5) == 0) {
-             char *szb = szi + 5;
-             INT32 nButton = strtol(szb, NULL, 0);
--            if (twinstick_game[nPlayer]) {
--               switch (nButton) {
--                  case 1:
--                     keybinds[pgi->Input.Switch.nCode][0] = RETRO_DEVICE_ID_JOYPAD_R;
--                     value_found = true;
--                     break;
--                  case 2:
--                     keybinds[pgi->Input.Switch.nCode][0] = RETRO_DEVICE_ID_JOYPAD_L;
--                     value_found = true;
--                     break;
--               }
--			}
--            else if (nFireButtons <= 4) {
--               if (is_neogeo_game) {
--                  switch (nButton) {
--                     case 1:
--                        keybinds[pgi->Input.Switch.nCode][0] = ((gamepad_controls_p1 && nPlayer == 0) || (gamepad_controls_p2 && nPlayer == 1) ? ((newgen_controls_p1 && nPlayer == 0) || (newgen_controls_p2 && nPlayer == 1) ? RETRO_DEVICE_ID_JOYPAD_Y : RETRO_DEVICE_ID_JOYPAD_B) : RETRO_DEVICE_ID_JOYPAD_A);
--                        value_found = true;
--                        break;
--                     case 2:
--                        keybinds[pgi->Input.Switch.nCode][0] = ((gamepad_controls_p1 && nPlayer == 0) || (gamepad_controls_p2 && nPlayer == 1) ? ((newgen_controls_p1 && nPlayer == 0) || (newgen_controls_p2 && nPlayer == 1) ? RETRO_DEVICE_ID_JOYPAD_B : RETRO_DEVICE_ID_JOYPAD_A) : RETRO_DEVICE_ID_JOYPAD_B);
--                        value_found = true;
--                        break;
--                     case 3:
--                        keybinds[pgi->Input.Switch.nCode][0] = ((gamepad_controls_p1 && nPlayer == 0) || (gamepad_controls_p2 && nPlayer == 1) ? ((newgen_controls_p1 && nPlayer == 0) || (newgen_controls_p2 && nPlayer == 1) ? RETRO_DEVICE_ID_JOYPAD_X : RETRO_DEVICE_ID_JOYPAD_Y) : RETRO_DEVICE_ID_JOYPAD_X);
--                        value_found = true;
--                        break;
--                     case 4:
--                        keybinds[pgi->Input.Switch.nCode][0] = ((gamepad_controls_p1 && nPlayer == 0) || (gamepad_controls_p2 && nPlayer == 1) ? ((newgen_controls_p1 && nPlayer == 0) || (newgen_controls_p2 && nPlayer == 1) ? RETRO_DEVICE_ID_JOYPAD_A : RETRO_DEVICE_ID_JOYPAD_X) : RETRO_DEVICE_ID_JOYPAD_Y);
--                        value_found = true;
--                        break;
--                  }
--               } else {
--                  switch (nButton) {
--                     case 1:
--                        keybinds[pgi->Input.Switch.nCode][0] = ((gamepad_controls_p1 && nPlayer == 0) || (gamepad_controls_p2 && nPlayer == 1) ? RETRO_DEVICE_ID_JOYPAD_Y : RETRO_DEVICE_ID_JOYPAD_A);
--                        value_found = true;
--                        break;
--                     case 2:
--                        keybinds[pgi->Input.Switch.nCode][0] = ((gamepad_controls_p1 && nPlayer == 0) || (gamepad_controls_p2 && nPlayer == 1) ? RETRO_DEVICE_ID_JOYPAD_B : RETRO_DEVICE_ID_JOYPAD_B);
--                        value_found = true;
--                        break;
--                     case 3:
--                        keybinds[pgi->Input.Switch.nCode][0] = ((gamepad_controls_p1 && nPlayer == 0) || (gamepad_controls_p2 && nPlayer == 1) ? RETRO_DEVICE_ID_JOYPAD_A : RETRO_DEVICE_ID_JOYPAD_X);
--                        value_found = true;
--                        break;
--                     case 4:
--                        keybinds[pgi->Input.Switch.nCode][0] = ((gamepad_controls_p1 && nPlayer == 0) || (gamepad_controls_p2 && nPlayer == 1) ? RETRO_DEVICE_ID_JOYPAD_X : RETRO_DEVICE_ID_JOYPAD_Y);
--                        value_found = true;
--                        break;
--                  }
--               }
--            } else {
--               if (bStreetFighterLayout) {
--                  switch (nButton) {
--                     case 1:
--                        keybinds[pgi->Input.Switch.nCode][0] = ((gamepad_controls_p1 && nPlayer == 0) || (gamepad_controls_p2 && nPlayer == 1) ? RETRO_DEVICE_ID_JOYPAD_Y : RETRO_DEVICE_ID_JOYPAD_A);
--                        value_found = true;
--                        break;
--                     case 2:
--                        keybinds[pgi->Input.Switch.nCode][0] = ((gamepad_controls_p1 && nPlayer == 0) || (gamepad_controls_p2 && nPlayer == 1) ? RETRO_DEVICE_ID_JOYPAD_X : RETRO_DEVICE_ID_JOYPAD_B);
--                        value_found = true;
--                        break;
--                     case 3:
--                        keybinds[pgi->Input.Switch.nCode][0] = ((gamepad_controls_p1 && nPlayer == 0) || (gamepad_controls_p2 && nPlayer == 1) ? ((remap_lr_p1 && nPlayer == 0) || (remap_lr_p2 && nPlayer == 1) ? RETRO_DEVICE_ID_JOYPAD_R : RETRO_DEVICE_ID_JOYPAD_L) : RETRO_DEVICE_ID_JOYPAD_X);
--                        value_found = true;
--                        break;
--                     case 4:
--                        keybinds[pgi->Input.Switch.nCode][0] = ((gamepad_controls_p1 && nPlayer == 0) || (gamepad_controls_p2 && nPlayer == 1) ? RETRO_DEVICE_ID_JOYPAD_B : RETRO_DEVICE_ID_JOYPAD_Y);
--                        value_found = true;
--                        break;
--                     case 5:
--                        keybinds[pgi->Input.Switch.nCode][0] = ((gamepad_controls_p1 && nPlayer == 0) || (gamepad_controls_p2 && nPlayer == 1) ? RETRO_DEVICE_ID_JOYPAD_A : RETRO_DEVICE_ID_JOYPAD_L);
--                        value_found = true;
--                        break;
--                     case 6:
--                        keybinds[pgi->Input.Switch.nCode][0] = ((gamepad_controls_p1 && nPlayer == 0) || (gamepad_controls_p2 && nPlayer == 1) ? ((remap_lr_p1 && nPlayer == 0) || (remap_lr_p2 && nPlayer == 1) ? RETRO_DEVICE_ID_JOYPAD_R2 : RETRO_DEVICE_ID_JOYPAD_R) : RETRO_DEVICE_ID_JOYPAD_R);
--                        value_found = true;
--                        break;
--                  }
--               } else {
-                   switch (nButton) {
-                      case 1:
--                        keybinds[pgi->Input.Switch.nCode][0] = ((gamepad_controls_p1 && nPlayer == 0) || (gamepad_controls_p2 && nPlayer == 1) ? RETRO_DEVICE_ID_JOYPAD_B : RETRO_DEVICE_ID_JOYPAD_A);
-+                        keybinds[pgi->Input.Switch.nCode][0] = RETRO_DEVICE_ID_JOYPAD_B;
-                         value_found = true;
-                         break;
-                      case 2:
--                        keybinds[pgi->Input.Switch.nCode][0] = ((gamepad_controls_p1 && nPlayer == 0) || (gamepad_controls_p2 && nPlayer == 1) ? RETRO_DEVICE_ID_JOYPAD_A : RETRO_DEVICE_ID_JOYPAD_B);
-+                        keybinds[pgi->Input.Switch.nCode][0] = RETRO_DEVICE_ID_JOYPAD_A;
-                         value_found = true;
-                         break;
-                      case 3:
--                        keybinds[pgi->Input.Switch.nCode][0] = ((gamepad_controls_p1 && nPlayer == 0) || (gamepad_controls_p2 && nPlayer == 1) ? ((remap_lr_p1 && nPlayer == 0) || (remap_lr_p2 && nPlayer == 1) ? RETRO_DEVICE_ID_JOYPAD_R2 : RETRO_DEVICE_ID_JOYPAD_R) : RETRO_DEVICE_ID_JOYPAD_X);
-+                        keybinds[pgi->Input.Switch.nCode][0] = RETRO_DEVICE_ID_JOYPAD_R;
-                         value_found = true;
-                         break;
-                      case 4:
--                        keybinds[pgi->Input.Switch.nCode][0] = ((gamepad_controls_p1 && nPlayer == 0) || (gamepad_controls_p2 && nPlayer == 1) ? RETRO_DEVICE_ID_JOYPAD_Y : RETRO_DEVICE_ID_JOYPAD_Y);
-+                        keybinds[pgi->Input.Switch.nCode][0] = RETRO_DEVICE_ID_JOYPAD_Y;
-                         value_found = true;
-                         break;
-                      case 5:
--                        keybinds[pgi->Input.Switch.nCode][0] = ((gamepad_controls_p1 && nPlayer == 0) || (gamepad_controls_p2 && nPlayer == 1) ? RETRO_DEVICE_ID_JOYPAD_X : RETRO_DEVICE_ID_JOYPAD_L);
-+                        keybinds[pgi->Input.Switch.nCode][0] = RETRO_DEVICE_ID_JOYPAD_X;
-                         value_found = true;
-                         break;
-                      case 6:
--                        keybinds[pgi->Input.Switch.nCode][0] = ((gamepad_controls_p1 && nPlayer == 0) || (gamepad_controls_p2 && nPlayer == 1) ? ((remap_lr_p1 && nPlayer == 0) || (remap_lr_p2 && nPlayer == 1) ? RETRO_DEVICE_ID_JOYPAD_R : RETRO_DEVICE_ID_JOYPAD_L) : RETRO_DEVICE_ID_JOYPAD_R);
-+                        keybinds[pgi->Input.Switch.nCode][0] = RETRO_DEVICE_ID_JOYPAD_L;
-                         value_found = true;
--                        break;
--                     case 7:
--                        keybinds[pgi->Input.Switch.nCode][0] = ((gamepad_controls_p1 && nPlayer == 0) || (gamepad_controls_p2 && nPlayer == 1) ? ((remap_lr_p1 && nPlayer == 0) || (remap_lr_p2 && nPlayer == 1) ? RETRO_DEVICE_ID_JOYPAD_L2 : RETRO_DEVICE_ID_JOYPAD_R2) : RETRO_DEVICE_ID_JOYPAD_R2);
--                        value_found = true;
--                        break;
--                     case 8:
--                        keybinds[pgi->Input.Switch.nCode][0] = ((gamepad_controls_p1 && nPlayer == 0) || (gamepad_controls_p2 && nPlayer == 1) ? ((remap_lr_p1 && nPlayer == 0) || (remap_lr_p2 && nPlayer == 1) ? RETRO_DEVICE_ID_JOYPAD_L : RETRO_DEVICE_ID_JOYPAD_L2) : RETRO_DEVICE_ID_JOYPAD_L2);
--                        value_found = true;
--                        break;
-                   }
--               }
--            }
-          }
+From 45ff818467b4eb2cc09fca0e6d560c642fb10012 Mon Sep 17 00:00:00 2001
+From: Baptiste Reynal <b.reynal@virtualopensystems.com>
+Date: Tue, 29 Nov 2016 12:02:20 +0100
+Subject: [PATCH 1/1] arcade controls
+
+---
+ src/burner/libretro/bind_map.cpp | 338 +++++++++++++++++++--------------------
+ 1 file changed, 169 insertions(+), 169 deletions(-)
+
+diff --git a/src/burner/libretro/bind_map.cpp b/src/burner/libretro/bind_map.cpp
+index 39a21be..ed5611c 100644
+--- a/src/burner/libretro/bind_map.cpp
++++ b/src/burner/libretro/bind_map.cpp
+@@ -494,35 +494,35 @@ unsigned init_bind_map(key_map bind_map[], bool gamepad_controls, bool newgen_co
+       /* General controls */
  
-          if (!value_found)
+       bind_map[PTR_INCR].bii_name = "Button 1";
+-      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_A;
++      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_B;
+       bind_map[PTR_INCR].nCode[1] = 0;
+ 
+       bind_map[PTR_INCR].bii_name = "Button 2";
+-      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_B;
++      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_A;
+       bind_map[PTR_INCR].nCode[1] = 0;
+ 
+       bind_map[PTR_INCR].bii_name = "Button 3";
+-      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_X;
++      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_R;
+       bind_map[PTR_INCR].nCode[1] = 0;
+ 
+       bind_map[PTR_INCR].bii_name = "P1 Button";
+-      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_A;
++      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_B;
+       bind_map[PTR_INCR].nCode[1] = 0;
+ 
+       bind_map[PTR_INCR].bii_name = "P2 Button";
+-      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_A;
++      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_B;
+       bind_map[PTR_INCR].nCode[1] = 1;
+ 
+       bind_map[PTR_INCR].bii_name = "P1 Button 1";
+-      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_A;
++      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_B;
+       bind_map[PTR_INCR].nCode[1] = 0;
+ 
+       bind_map[PTR_INCR].bii_name = "P1 Button 2";
+-      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_B;
++      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_A;
+       bind_map[PTR_INCR].nCode[1] = 0;
+ 
+       bind_map[PTR_INCR].bii_name = "P1 Button 3";
+-      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_X;
++      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_R;
+       bind_map[PTR_INCR].nCode[1] = 0;
+ 
+       bind_map[PTR_INCR].bii_name = "P1 Button 4";
+@@ -530,23 +530,23 @@ unsigned init_bind_map(key_map bind_map[], bool gamepad_controls, bool newgen_co
+       bind_map[PTR_INCR].nCode[1] = 0;
+ 
+       bind_map[PTR_INCR].bii_name = "P1 Button 5";
+-      bind_map[PTR_INCR].nCode[0] = (remap_lr_p1 ? RETRO_DEVICE_ID_JOYPAD_R : RETRO_DEVICE_ID_JOYPAD_L);
++      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_X;
+       bind_map[PTR_INCR].nCode[1] = 0;
+ 
+       bind_map[PTR_INCR].bii_name = "P1 Button 6";
+-      bind_map[PTR_INCR].nCode[0] = (remap_lr_p1 ? RETRO_DEVICE_ID_JOYPAD_R2 : RETRO_DEVICE_ID_JOYPAD_R);
++      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_L;
+       bind_map[PTR_INCR].nCode[1] = 0;
+ 
+       bind_map[PTR_INCR].bii_name = "P2 Button 1";
+-      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_A;
++      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_B;
+       bind_map[PTR_INCR].nCode[1] = 1;
+ 
+       bind_map[PTR_INCR].bii_name = "P2 Button 2";
+-      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_B;
++      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_A;
+       bind_map[PTR_INCR].nCode[1] = 1;
+ 
+       bind_map[PTR_INCR].bii_name = "P2 Button 3";
+-      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_X;
++      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_R;
+       bind_map[PTR_INCR].nCode[1] = 1;
+ 
+       bind_map[PTR_INCR].bii_name = "P2 Button 4";
+@@ -554,23 +554,23 @@ unsigned init_bind_map(key_map bind_map[], bool gamepad_controls, bool newgen_co
+       bind_map[PTR_INCR].nCode[1] = 1;
+ 
+       bind_map[PTR_INCR].bii_name = "P2 Button 5";
+-      bind_map[PTR_INCR].nCode[0] = (remap_lr_p2 ? RETRO_DEVICE_ID_JOYPAD_R : RETRO_DEVICE_ID_JOYPAD_L);
++      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_X;
+       bind_map[PTR_INCR].nCode[1] = 1;
+ 
+       bind_map[PTR_INCR].bii_name = "P2 Button 6";
+-      bind_map[PTR_INCR].nCode[0] = (remap_lr_p2 ? RETRO_DEVICE_ID_JOYPAD_R2 : RETRO_DEVICE_ID_JOYPAD_R);
++      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_L;
+       bind_map[PTR_INCR].nCode[1] = 1;
+ 
+       bind_map[PTR_INCR].bii_name = "P3 Button 1";
+-      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_A;
++      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_B;
+       bind_map[PTR_INCR].nCode[1] = 2;
+ 
+       bind_map[PTR_INCR].bii_name = "P3 Button 2";
+-      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_B;
++      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_A;
+       bind_map[PTR_INCR].nCode[1] = 2;
+ 
+       bind_map[PTR_INCR].bii_name = "P3 Button 3";
+-      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_X;
++      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_R;
+       bind_map[PTR_INCR].nCode[1] = 2;
+ 
+       bind_map[PTR_INCR].bii_name = "P3 Button 4";
+@@ -578,15 +578,15 @@ unsigned init_bind_map(key_map bind_map[], bool gamepad_controls, bool newgen_co
+       bind_map[PTR_INCR].nCode[1] = 2;
+ 
+       bind_map[PTR_INCR].bii_name = "P4 Button 1";
+-      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_A;
++      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_B;
+       bind_map[PTR_INCR].nCode[1] = 3;
+ 
+       bind_map[PTR_INCR].bii_name = "P4 Button 2";
+-      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_B;
++      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_A;
+       bind_map[PTR_INCR].nCode[1] = 3;
+ 
+       bind_map[PTR_INCR].bii_name = "P4 Button 3";
+-      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_X;
++      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_R;
+       bind_map[PTR_INCR].nCode[1] = 3;
+ 
+       bind_map[PTR_INCR].bii_name = "P4 Button 4";
+@@ -596,15 +596,15 @@ unsigned init_bind_map(key_map bind_map[], bool gamepad_controls, bool newgen_co
+       /* Space Harrier, 1942, Capcom Commando, Heavy Barrel, etc. */
+ 
+       bind_map[PTR_INCR].bii_name = "Fire 1";
+-      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_A;
++      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_B;
+       bind_map[PTR_INCR].nCode[1] = 0;
+ 
+       bind_map[PTR_INCR].bii_name = "Fire 2";
+-      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_B;
++      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_A;
+       bind_map[PTR_INCR].nCode[1] = 0;
+ 
+       bind_map[PTR_INCR].bii_name = "Fire 3";
+-      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_X;
++      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_R;
+       bind_map[PTR_INCR].nCode[1] = 0;
+ 
+       bind_map[PTR_INCR].bii_name = "Fire 4";
+@@ -612,19 +612,19 @@ unsigned init_bind_map(key_map bind_map[], bool gamepad_controls, bool newgen_co
+       bind_map[PTR_INCR].nCode[1] = 0;
+ 
+       bind_map[PTR_INCR].bii_name = "Fire 5";
+-      bind_map[PTR_INCR].nCode[0] = (remap_lr_p1 ? RETRO_DEVICE_ID_JOYPAD_R : RETRO_DEVICE_ID_JOYPAD_L);
++      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_X;
+       bind_map[PTR_INCR].nCode[1] = 0;
+ 
+       bind_map[PTR_INCR].bii_name = "Fire 1 (Cocktail)";
+-      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_A;
++      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_B;
+       bind_map[PTR_INCR].nCode[1] = 0;
+ 
+       bind_map[PTR_INCR].bii_name = "Fire 2 (Cocktail)";
+-      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_B;
++      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_A;
+       bind_map[PTR_INCR].nCode[1] = 0;
+ 
+       bind_map[PTR_INCR].bii_name = "Fire 3 (Cocktail)";
+-      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_X;
++      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_R;
+       bind_map[PTR_INCR].nCode[1] = 0;
+ 
+       bind_map[PTR_INCR].bii_name = "Fire 4 (Cocktail)";
+@@ -632,91 +632,91 @@ unsigned init_bind_map(key_map bind_map[], bool gamepad_controls, bool newgen_co
+       bind_map[PTR_INCR].nCode[1] = 0;
+ 
+       bind_map[PTR_INCR].bii_name = "Fire 5 (Cocktail)";
+-      bind_map[PTR_INCR].nCode[0] = (remap_lr_p2 ? RETRO_DEVICE_ID_JOYPAD_R : RETRO_DEVICE_ID_JOYPAD_L);
++      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_X;
+       bind_map[PTR_INCR].nCode[1] = 0;
+ 
+       bind_map[PTR_INCR].bii_name = "P1 Fire";
+-      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_A;
++      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_B;
+       bind_map[PTR_INCR].nCode[1] = 0;
+ 
+       bind_map[PTR_INCR].bii_name = "P1 Fire 1";
+-      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_A;
++      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_B;
+       bind_map[PTR_INCR].nCode[1] = 0;
+ 
+       bind_map[PTR_INCR].bii_name = "P1 Fire 2";
+-      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_B;
++      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_A;
+       bind_map[PTR_INCR].nCode[1] = 0;
+ 
+       bind_map[PTR_INCR].bii_name = "P1 Fire 3";
+-      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_X;
++      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_R;
+       bind_map[PTR_INCR].nCode[1] = 0;
+ 
+       bind_map[PTR_INCR].bii_name = "P2 Fire";
+-      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_A;
++      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_B;
+       bind_map[PTR_INCR].nCode[1] = 1;
+ 
+       bind_map[PTR_INCR].bii_name = "P2 Fire 1";
+-      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_A;
++      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_B;
+       bind_map[PTR_INCR].nCode[1] = 1;
+ 
+       bind_map[PTR_INCR].bii_name = "P2 Fire 2";
+-      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_B;
++      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_A;
+       bind_map[PTR_INCR].nCode[1] = 1;
+ 
+       bind_map[PTR_INCR].bii_name = "P2 Fire 3";
+-      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_X;
++      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_R;
+       bind_map[PTR_INCR].nCode[1] = 1;
+ 
+       bind_map[PTR_INCR].bii_name = "P3 Fire 1";
+-      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_A;
++      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_B;
+       bind_map[PTR_INCR].nCode[1] = 2;
+ 
+       bind_map[PTR_INCR].bii_name = "P3 Fire 2";
+-      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_B;
++      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_A;
+       bind_map[PTR_INCR].nCode[1] = 2;
+ 
+       bind_map[PTR_INCR].bii_name = "P3 Fire 3";
+-      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_X;
++      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_R;
+       bind_map[PTR_INCR].nCode[1] = 2;
+ 
+       bind_map[PTR_INCR].bii_name = "P4 Fire 1";
+-      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_A;
++      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_B;
+       bind_map[PTR_INCR].nCode[1] = 3;
+ 
+       bind_map[PTR_INCR].bii_name = "P4 Fire 2";
+-      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_B;
++      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_A;
+       bind_map[PTR_INCR].nCode[1] = 3;
+ 
+       bind_map[PTR_INCR].bii_name = "P4 Fire 3";
+-      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_X;
++      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_R;
+       bind_map[PTR_INCR].nCode[1] = 3;
+ 
+       /* Tri-Pool */
+ 
+       bind_map[PTR_INCR].bii_name = "Select Game 1";
+-      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_A;
++      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_B;
+       bind_map[PTR_INCR].nCode[1] = 0;
+ 
+       bind_map[PTR_INCR].bii_name = "Select Game 2";
+-      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_B;
++      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_A;
+       bind_map[PTR_INCR].nCode[1] = 0;
+ 
+       bind_map[PTR_INCR].bii_name = "Select Game 3";
+-      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_X;
++      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_R;
+       bind_map[PTR_INCR].nCode[1] = 0;
+ 
+       /* Neo Geo */
+ 
+       bind_map[PTR_INCR].bii_name = "P1 Button A";
+-      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_A;
++      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_B;
+       bind_map[PTR_INCR].nCode[1] = 0;
+ 
+       bind_map[PTR_INCR].bii_name = "P1 Button B";
+-      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_B;
++      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_A;
+       bind_map[PTR_INCR].nCode[1] = 0;
+ 
+       bind_map[PTR_INCR].bii_name = "P1 Button C";
+-      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_X;
++      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_R;
+       bind_map[PTR_INCR].nCode[1] = 0;
+ 
+       bind_map[PTR_INCR].bii_name = "P1 Button D";
+@@ -724,15 +724,15 @@ unsigned init_bind_map(key_map bind_map[], bool gamepad_controls, bool newgen_co
+       bind_map[PTR_INCR].nCode[1] = 0;
+ 
+       bind_map[PTR_INCR].bii_name = "P2 Button A";
+-      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_A;
++      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_B;
+       bind_map[PTR_INCR].nCode[1] = 1;
+ 
+       bind_map[PTR_INCR].bii_name = "P2 Button B";
+-      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_B;
++      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_A;
+       bind_map[PTR_INCR].nCode[1] = 1;
+ 
+       bind_map[PTR_INCR].bii_name = "P2 Button C";
+-      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_X;
++      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_R;
+       bind_map[PTR_INCR].nCode[1] = 1;
+ 
+       bind_map[PTR_INCR].bii_name = "P2 Button D";
+@@ -742,15 +742,15 @@ unsigned init_bind_map(key_map bind_map[], bool gamepad_controls, bool newgen_co
+       /* Street Fighter II, Darkstalkers, etc. */
+ 
+       bind_map[PTR_INCR].bii_name = "P1 Weak Punch";
+-      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_A;
++      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_B;
+       bind_map[PTR_INCR].nCode[1] = 0;
+ 
+       bind_map[PTR_INCR].bii_name = "P1 Medium Punch";
+-      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_B;
++      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_A;
+       bind_map[PTR_INCR].nCode[1] = 0;
+ 
+       bind_map[PTR_INCR].bii_name = "P1 Strong Punch";
+-      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_X;
++      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_R;
+       bind_map[PTR_INCR].nCode[1] = 0;
+ 
+       bind_map[PTR_INCR].bii_name = "P1 Weak Kick";
+@@ -758,23 +758,23 @@ unsigned init_bind_map(key_map bind_map[], bool gamepad_controls, bool newgen_co
+       bind_map[PTR_INCR].nCode[1] = 0;
+ 
+       bind_map[PTR_INCR].bii_name = "P1 Medium Kick";
+-      bind_map[PTR_INCR].nCode[0] = (remap_lr_p1 ? RETRO_DEVICE_ID_JOYPAD_R : RETRO_DEVICE_ID_JOYPAD_L);
++      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_X;
+       bind_map[PTR_INCR].nCode[1] = 0;
+ 
+       bind_map[PTR_INCR].bii_name = "P1 Strong Kick";
+-      bind_map[PTR_INCR].nCode[0] = (remap_lr_p1 ? RETRO_DEVICE_ID_JOYPAD_R2 : RETRO_DEVICE_ID_JOYPAD_R);
++      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_L;
+       bind_map[PTR_INCR].nCode[1] = 0;
+ 
+       bind_map[PTR_INCR].bii_name = "P2 Weak Punch";
+-      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_A;
++      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_B;
+       bind_map[PTR_INCR].nCode[1] = 1;
+ 
+       bind_map[PTR_INCR].bii_name = "P2 Medium Punch";
+-      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_B;
++      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_A;
+       bind_map[PTR_INCR].nCode[1] = 1;
+ 
+       bind_map[PTR_INCR].bii_name = "P2 Strong Punch";
+-      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_X;
++      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_R;
+       bind_map[PTR_INCR].nCode[1] = 1;
+ 
+       bind_map[PTR_INCR].bii_name = "P2 Weak Kick";
+@@ -782,25 +782,25 @@ unsigned init_bind_map(key_map bind_map[], bool gamepad_controls, bool newgen_co
+       bind_map[PTR_INCR].nCode[1] = 1;
+ 
+       bind_map[PTR_INCR].bii_name = "P2 Medium Kick";
+-      bind_map[PTR_INCR].nCode[0] = (remap_lr_p2 ? RETRO_DEVICE_ID_JOYPAD_R : RETRO_DEVICE_ID_JOYPAD_L);
++      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_X;
+       bind_map[PTR_INCR].nCode[1] = 1;
+ 
+       bind_map[PTR_INCR].bii_name = "P2 Strong Kick";
+-      bind_map[PTR_INCR].nCode[0] = (remap_lr_p2 ? RETRO_DEVICE_ID_JOYPAD_R2 : RETRO_DEVICE_ID_JOYPAD_R);
++      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_L;
+       bind_map[PTR_INCR].nCode[1] = 1;
+ 
+      /* Battle K-Road */
+ 
+       bind_map[PTR_INCR].bii_name = "P1 Weak punch";
+-      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_A;
++      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_B;
+       bind_map[PTR_INCR].nCode[1] = 0;
+ 
+       bind_map[PTR_INCR].bii_name = "P1 Medium punch";
+-      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_B;
++      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_A;
+       bind_map[PTR_INCR].nCode[1] = 0;
+ 
+       bind_map[PTR_INCR].bii_name = "P1 Strong punch";
+-      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_X;
++      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_R;
+       bind_map[PTR_INCR].nCode[1] = 0;
+ 
+       bind_map[PTR_INCR].bii_name = "P1 Weak kick";
+@@ -808,23 +808,23 @@ unsigned init_bind_map(key_map bind_map[], bool gamepad_controls, bool newgen_co
+       bind_map[PTR_INCR].nCode[1] = 0;
+ 
+       bind_map[PTR_INCR].bii_name = "P1 Medium kick";
+-      bind_map[PTR_INCR].nCode[0] = (remap_lr_p1 ? RETRO_DEVICE_ID_JOYPAD_R : RETRO_DEVICE_ID_JOYPAD_L);
++      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_X;
+       bind_map[PTR_INCR].nCode[1] = 0;
+ 
+       bind_map[PTR_INCR].bii_name = "P1 Strong kick";
+-      bind_map[PTR_INCR].nCode[0] = (remap_lr_p1 ? RETRO_DEVICE_ID_JOYPAD_R2 : RETRO_DEVICE_ID_JOYPAD_R);
++      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_L;
+       bind_map[PTR_INCR].nCode[1] = 0;
+ 
+       bind_map[PTR_INCR].bii_name = "P2 Weak punch";
+-      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_A;
++      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_B;
+       bind_map[PTR_INCR].nCode[1] = 0;
+ 
+       bind_map[PTR_INCR].bii_name = "P2 Medium punch";
+-      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_B;
++      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_A;
+       bind_map[PTR_INCR].nCode[1] = 0;
+ 
+       bind_map[PTR_INCR].bii_name = "P2 Strong punch";
+-      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_X;
++      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_R;
+       bind_map[PTR_INCR].nCode[1] = 0;
+ 
+       bind_map[PTR_INCR].bii_name = "P2 Weak kick";
+@@ -832,25 +832,25 @@ unsigned init_bind_map(key_map bind_map[], bool gamepad_controls, bool newgen_co
+       bind_map[PTR_INCR].nCode[1] = 0;
+ 
+       bind_map[PTR_INCR].bii_name = "P2 Medium kick";
+-      bind_map[PTR_INCR].nCode[0] = (remap_lr_p2 ? RETRO_DEVICE_ID_JOYPAD_R : RETRO_DEVICE_ID_JOYPAD_L);
++      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_X;
+       bind_map[PTR_INCR].nCode[1] = 0;
+ 
+       bind_map[PTR_INCR].bii_name = "P2 Strong kick";
+-      bind_map[PTR_INCR].nCode[0] = (remap_lr_p2 ? RETRO_DEVICE_ID_JOYPAD_R2 : RETRO_DEVICE_ID_JOYPAD_R);
++      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_L;
+       bind_map[PTR_INCR].nCode[1] = 0;
+ 
+      /* Cyberbots: Full Metal Madness */
+ 
+       bind_map[PTR_INCR].bii_name = "P1 Low Attack";
+-      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_A;
++      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_B;
+       bind_map[PTR_INCR].nCode[1] = 0;
+ 
+       bind_map[PTR_INCR].bii_name = "P1 High Attack";
+-      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_B;
++      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_A;
+       bind_map[PTR_INCR].nCode[1] = 0;
+ 
+       bind_map[PTR_INCR].bii_name = "P1 Weapon";
+-      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_X;
++      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_R;
+       bind_map[PTR_INCR].nCode[1] = 0;
+ 
+       bind_map[PTR_INCR].bii_name = "P1 Boost";
+@@ -858,15 +858,15 @@ unsigned init_bind_map(key_map bind_map[], bool gamepad_controls, bool newgen_co
+       bind_map[PTR_INCR].nCode[1] = 0;
+ 
+       bind_map[PTR_INCR].bii_name = "P2 Low Attack";
+-      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_A;
++      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_B;
+       bind_map[PTR_INCR].nCode[1] = 1;
+ 
+       bind_map[PTR_INCR].bii_name = "P2 High Attack";
+-      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_B;
++      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_A;
+       bind_map[PTR_INCR].nCode[1] = 1;
+ 
+       bind_map[PTR_INCR].bii_name = "P2 Weapon";
+-      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_X;
++      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_R;
+       bind_map[PTR_INCR].nCode[1] = 1;
+ 
+       bind_map[PTR_INCR].bii_name = "P2 Boost";
+@@ -876,34 +876,34 @@ unsigned init_bind_map(key_map bind_map[], bool gamepad_controls, bool newgen_co
+       /* Super Gem Fighter Mini Mix */
+ 
+       bind_map[PTR_INCR].bii_name = "P1 Punch";
+-      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_A;
++      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_B;
+       bind_map[PTR_INCR].nCode[1] = 0;
+ 
+       bind_map[PTR_INCR].bii_name = "P1 Kick";
+-      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_B;
++      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_A;
+       bind_map[PTR_INCR].nCode[1] = 0;
+ 
+       bind_map[PTR_INCR].bii_name = "P2 Punch";
+-      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_A;
++      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_B;
+       bind_map[PTR_INCR].nCode[1] = 1;
+ 
+       bind_map[PTR_INCR].bii_name = "P2 Kick";
+-      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_B;
++      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_A;
+       bind_map[PTR_INCR].nCode[1] = 1;
+ 
+       /* Killer Instinct */
+ 
+       /*
+       bind_map[PTR_INCR].bii_name = "P1 Button A";
+-      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_A;
++      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_B;
+       bind_map[PTR_INCR].nCode[1] = 0;
+ 
+       bind_map[PTR_INCR].bii_name = "P1 Button B";
+-      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_B;
++      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_A;
+       bind_map[PTR_INCR].nCode[1] = 0;
+ 
+       bind_map[PTR_INCR].bii_name = "P1 Button C";
+-      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_X;
++      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_R;
+       bind_map[PTR_INCR].nCode[1] = 0;
+ 
+       bind_map[PTR_INCR].bii_name = "P1 Button X";
+@@ -919,15 +919,15 @@ unsigned init_bind_map(key_map bind_map[], bool gamepad_controls, bool newgen_co
+       bind_map[PTR_INCR].nCode[1] = 0;
+ 
+       bind_map[PTR_INCR].bii_name = "P2 Button A";
+-      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_A;
++      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_B;
+       bind_map[PTR_INCR].nCode[1] = 1;
+ 
+       bind_map[PTR_INCR].bii_name = "P2 Button B";
+-      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_B;
++      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_A;
+       bind_map[PTR_INCR].nCode[1] = 1;
+ 
+       bind_map[PTR_INCR].bii_name = "P2 Button C";
+-      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_X;
++      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_R;
+       bind_map[PTR_INCR].nCode[1] = 1;
+ 
+       bind_map[PTR_INCR].bii_name = "P2 Button X";
+@@ -946,69 +946,69 @@ unsigned init_bind_map(key_map bind_map[], bool gamepad_controls, bool newgen_co
+       /* Final Fight, Captain Commando, etc. */
+ 
+       bind_map[PTR_INCR].bii_name = "P1 Attack";
+-      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_A;
++      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_B;
+       bind_map[PTR_INCR].nCode[1] = 0;
+ 
+       bind_map[PTR_INCR].bii_name = "P1 Jump";
+-      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_B;
++      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_A;
+       bind_map[PTR_INCR].nCode[1] = 0;
+ 
+       bind_map[PTR_INCR].bii_name = "P2 Attack";
+-      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_A;
++      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_B;
+       bind_map[PTR_INCR].nCode[1] = 1;
+ 
+       bind_map[PTR_INCR].bii_name = "P2 Jump";
+-      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_B;
++      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_A;
+       bind_map[PTR_INCR].nCode[1] = 1;
+ 
+       bind_map[PTR_INCR].bii_name = "P3 Attack";
+-      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_A;
++      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_B;
+       bind_map[PTR_INCR].nCode[1] = 2;
+ 
+       bind_map[PTR_INCR].bii_name = "P3 Jump";
+-      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_B;
++      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_A;
+       bind_map[PTR_INCR].nCode[1] = 2;
+ 
+       bind_map[PTR_INCR].bii_name = "P4 Attack";
+-      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_A;
++      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_B;
+       bind_map[PTR_INCR].nCode[1] = 3;
+ 
+       bind_map[PTR_INCR].bii_name = "P4 Jump";
+-      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_B;
++      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_A;
+       bind_map[PTR_INCR].nCode[1] = 3;
+ 
+       /* The Punisher */
+ 
+       bind_map[PTR_INCR].bii_name = "P1 Super";
+-      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_X;
++      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_R;
+       bind_map[PTR_INCR].nCode[1] = 0;
+ 
+       bind_map[PTR_INCR].bii_name = "P2 Super";
+-      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_X;
++      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_R;
+       bind_map[PTR_INCR].nCode[1] = 1;
+ 
+       /* Saturday Night Slam Masters */
+ 
+       bind_map[PTR_INCR].bii_name = "P1 Pin";
+-      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_X;
++      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_R;
+       bind_map[PTR_INCR].nCode[1] = 0;
+ 
+       bind_map[PTR_INCR].bii_name = "P2 Pin";
+-      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_X;
++      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_R;
+       bind_map[PTR_INCR].nCode[1] = 1;
+ 
+       bind_map[PTR_INCR].bii_name = "P3 Pin";
+-      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_X;
++      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_R;
+       bind_map[PTR_INCR].nCode[1] = 2;
+ 
+       bind_map[PTR_INCR].bii_name = "P4 Pin";
+-      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_X;
++      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_R;
+       bind_map[PTR_INCR].nCode[1] = 3;
+ 
+       /* Dungeons & Dragons Tower of Doom/Shadow over Mystara */
+ 
+       bind_map[PTR_INCR].bii_name = "P1 Select";
+-      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_X;
++      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_R;
+       bind_map[PTR_INCR].nCode[1] = 0;
+ 
+       bind_map[PTR_INCR].bii_name = "P1 Use";
+@@ -1016,7 +1016,7 @@ unsigned init_bind_map(key_map bind_map[], bool gamepad_controls, bool newgen_co
+       bind_map[PTR_INCR].nCode[1] = 0;
+ 
+       bind_map[PTR_INCR].bii_name = "P2 Select";
+-      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_X;
++      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_R;
+       bind_map[PTR_INCR].nCode[1] = 1;
+ 
+       bind_map[PTR_INCR].bii_name = "P2 Use";
+@@ -1024,7 +1024,7 @@ unsigned init_bind_map(key_map bind_map[], bool gamepad_controls, bool newgen_co
+       bind_map[PTR_INCR].nCode[1] = 1;
+ 
+       bind_map[PTR_INCR].bii_name = "P3 Select";
+-      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_X;
++      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_R;
+       bind_map[PTR_INCR].nCode[1] = 2;
+ 
+       bind_map[PTR_INCR].bii_name = "P3 Use";
+@@ -1032,7 +1032,7 @@ unsigned init_bind_map(key_map bind_map[], bool gamepad_controls, bool newgen_co
+       bind_map[PTR_INCR].nCode[1] = 2;
+ 
+       bind_map[PTR_INCR].bii_name = "P4 Select";
+-      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_X;
++      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_R;
+       bind_map[PTR_INCR].nCode[1] = 3;
+ 
+       bind_map[PTR_INCR].bii_name = "P4 Use";
+@@ -1042,99 +1042,99 @@ unsigned init_bind_map(key_map bind_map[], bool gamepad_controls, bool newgen_co
+       /* Mercs, U.N. Squadron, Mega Twins, etc. */
+ 
+       bind_map[PTR_INCR].bii_name = "P1 Special";
+-      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_X;
++      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_R;
+       bind_map[PTR_INCR].nCode[1] = 0;
+ 
+       bind_map[PTR_INCR].bii_name = "P2 Special";
+-      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_X;
++      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_R;
+       bind_map[PTR_INCR].nCode[1] = 1;
+ 
+       bind_map[PTR_INCR].bii_name = "P3 Special";
+-      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_X;
++      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_R;
+       bind_map[PTR_INCR].nCode[1] = 2;
+ 
+       /* Dynasty Wars */
+ 
+       bind_map[PTR_INCR].bii_name = "P1 Attack Left";
+-      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_A;
++      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_B;
+       bind_map[PTR_INCR].nCode[1] = 0;
+ 
+       bind_map[PTR_INCR].bii_name = "P1 Attack Right";
+-      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_B;
++      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_A;
+       bind_map[PTR_INCR].nCode[1] = 0;
+ 
+       bind_map[PTR_INCR].bii_name = "P2 Attack Left";
+-      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_A;
++      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_B;
+       bind_map[PTR_INCR].nCode[1] = 1;
+ 
+       bind_map[PTR_INCR].bii_name = "P2 Attack Right";
+-      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_B;
++      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_A;
+       bind_map[PTR_INCR].nCode[1] = 1;
+ 
+       /* Armed Police Batrider & Battle Bakraid */
+ 
+       bind_map[PTR_INCR].bii_name = "P1 Shoot 1";
+-      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_A;
++      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_B;
+       bind_map[PTR_INCR].nCode[1] = 0;
+ 
+       bind_map[PTR_INCR].bii_name = "P1 Shoot 2";
+-      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_B;
++      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_A;
+       bind_map[PTR_INCR].nCode[1] = 0;
+ 
+       bind_map[PTR_INCR].bii_name = "P1 Shoot 3";
+-      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_X;
++      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_R;
+       bind_map[PTR_INCR].nCode[1] = 0;
+ 
+       bind_map[PTR_INCR].bii_name = "P2 Shoot 1";
+-      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_A;
++      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_B;
+       bind_map[PTR_INCR].nCode[1] = 1;
+ 
+       bind_map[PTR_INCR].bii_name = "P2 Shoot 2";
+-      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_B;
++      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_A;
+       bind_map[PTR_INCR].nCode[1] = 1;
+ 
+       bind_map[PTR_INCR].bii_name = "P2 Shoot 3";
+-      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_X;
++      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_R;
+       bind_map[PTR_INCR].nCode[1] = 1;
+ 
+       /* Pang 3 */
+ 
+       bind_map[PTR_INCR].bii_name = "P1 Shot 1";
+-      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_A;
++      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_B;
+       bind_map[PTR_INCR].nCode[1] = 0;
+ 
+       bind_map[PTR_INCR].bii_name = "P1 Shot 2";
+-      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_B;
++      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_A;
+       bind_map[PTR_INCR].nCode[1] = 0;
+ 
+       bind_map[PTR_INCR].bii_name = "P2 Shot 1";
+-      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_A;
++      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_B;
+       bind_map[PTR_INCR].nCode[1] = 1;
+ 
+       bind_map[PTR_INCR].bii_name = "P2 Shot 2";
+-      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_B;
++      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_A;
+       bind_map[PTR_INCR].nCode[1] = 1;
+ 
+       /* Mighty! Pang, Jong Pai Puzzle Choko and Jyangokushi: Haoh no Saihai */
+ 
+       bind_map[PTR_INCR].bii_name = "P1 Shot1";
+-      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_A;
++      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_B;
+       bind_map[PTR_INCR].nCode[1] = 0;
+ 
+       bind_map[PTR_INCR].bii_name = "P1 Shot2";
+-      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_B;
++      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_A;
+       bind_map[PTR_INCR].nCode[1] = 0;
+ 
+       bind_map[PTR_INCR].bii_name = "P1 Shot3";
+-      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_X;
++      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_R;
+       bind_map[PTR_INCR].nCode[1] = 0;
+ 
+       bind_map[PTR_INCR].bii_name = "P2 Shot1";
+-      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_A;
++      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_B;
+       bind_map[PTR_INCR].nCode[1] = 1;
+ 
+       bind_map[PTR_INCR].bii_name = "P2 Shot2";
+-      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_B;
++      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_A;
+       bind_map[PTR_INCR].nCode[1] = 1;
+ 
+       /* Carrier Air Wing, Mars Matrix, Alien vs Predator, etc.
+@@ -1143,131 +1143,131 @@ unsigned init_bind_map(key_map bind_map[], bool gamepad_controls, bool newgen_co
+        * Alien vs. Predator and Armored Warriors received if statements as a workaround */
+ 
+       bind_map[PTR_INCR].bii_name = "P1 Shot";
+-      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_A;
++      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_B;
+       bind_map[PTR_INCR].nCode[1] = 0;
+ 
+       bind_map[PTR_INCR].bii_name = "P2 Shot";
+-      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_A;
++      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_B;
+       bind_map[PTR_INCR].nCode[1] = 1;
+ 
+       bind_map[PTR_INCR].bii_name = "P3 Shot";
+-      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_A;
++      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_B;
+       bind_map[PTR_INCR].nCode[1] = 2;
+ 
+       bind_map[PTR_INCR].bii_name = "P4 Shot";
+-      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_A;
++      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_B;
+       bind_map[PTR_INCR].nCode[1] = 3;
+ 
+       /* Varth, Giga Wing, etc. */
+ 
+       bind_map[PTR_INCR].bii_name = "P1 Bomb";
+-      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_B;
++      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_A;
+       bind_map[PTR_INCR].nCode[1] = 0;
+ 
+       bind_map[PTR_INCR].bii_name = "P2 Bomb";
+-      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_B;
++      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_A;
+       bind_map[PTR_INCR].nCode[1] = 1;
+ 
+       /* Enforce */
+ 
+       bind_map[PTR_INCR].bii_name = "Laser";
+-      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_A;
++      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_B;
+       bind_map[PTR_INCR].nCode[1] = 0;
+ 
+       bind_map[PTR_INCR].bii_name = "Bomb";
+-      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_B;
++      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_A;
+       bind_map[PTR_INCR].nCode[1] = 0;
+ 
+       /* Progear */
+ 
+       bind_map[PTR_INCR].bii_name = "P1 Auto";
+-      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_X;
++      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_R;
+       bind_map[PTR_INCR].nCode[1] = 0;
+ 
+       bind_map[PTR_INCR].bii_name = "P2 Auto";
+-      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_X;
++      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_R;
+       bind_map[PTR_INCR].nCode[1] = 1;
+ 
+       /* Dimahoo */
+ 
+       bind_map[PTR_INCR].bii_name = "P1 Shot (auto)";
+-      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_X;
++      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_R;
+       bind_map[PTR_INCR].nCode[1] = 0;
+ 
+       bind_map[PTR_INCR].bii_name = "P2 Shot (auto)";
+-      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_X;
++      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_R;
+       bind_map[PTR_INCR].nCode[1] = 1;
+ 
+       /* Eco Fighters and Pnickies */
+ 
+       bind_map[PTR_INCR].bii_name = "P1 Turn 1";
+-      bind_map[PTR_INCR].nCode[0] = (remap_lr_p1 ? RETRO_DEVICE_ID_JOYPAD_R : RETRO_DEVICE_ID_JOYPAD_L);
++      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_X;
+       bind_map[PTR_INCR].nCode[1] = 0;
+ 
+       bind_map[PTR_INCR].bii_name = "P1 Turn 2";
+-      bind_map[PTR_INCR].nCode[0] = (remap_lr_p1 ? RETRO_DEVICE_ID_JOYPAD_R2 : RETRO_DEVICE_ID_JOYPAD_R);
++      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_L;
+       bind_map[PTR_INCR].nCode[1] = 0;
+ 
+       bind_map[PTR_INCR].bii_name = "P2 Turn 1";
+-      bind_map[PTR_INCR].nCode[0] = (remap_lr_p2 ? RETRO_DEVICE_ID_JOYPAD_R : RETRO_DEVICE_ID_JOYPAD_L);
++      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_X;
+       bind_map[PTR_INCR].nCode[1] = 1;
+ 
+       bind_map[PTR_INCR].bii_name = "P2 Turn 2";
+-      bind_map[PTR_INCR].nCode[0] = (remap_lr_p2 ? RETRO_DEVICE_ID_JOYPAD_R2 : RETRO_DEVICE_ID_JOYPAD_R);
++      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_L;
+       bind_map[PTR_INCR].nCode[1] = 1;
+ 
+       /* Last Survivor */
+ 
+       bind_map[PTR_INCR].bii_name = "P1 Turn Left";
+-      bind_map[PTR_INCR].nCode[0] = (remap_lr_p1 ? RETRO_DEVICE_ID_JOYPAD_R : RETRO_DEVICE_ID_JOYPAD_L);
++      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_X;
+       bind_map[PTR_INCR].nCode[1] = 0;
+ 
+       bind_map[PTR_INCR].bii_name = "P1 Turn Right";
+-      bind_map[PTR_INCR].nCode[0] = (remap_lr_p1 ? RETRO_DEVICE_ID_JOYPAD_R2 : RETRO_DEVICE_ID_JOYPAD_R);
++      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_L;
+       bind_map[PTR_INCR].nCode[1] = 0;
+ 
+       bind_map[PTR_INCR].bii_name = "P2 Turn Left";
+-      bind_map[PTR_INCR].nCode[0] = (remap_lr_p2 ? RETRO_DEVICE_ID_JOYPAD_R : RETRO_DEVICE_ID_JOYPAD_L);
++      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_X;
+       bind_map[PTR_INCR].nCode[1] = 1;
+ 
+       bind_map[PTR_INCR].bii_name = "P2 Turn Right";
+-      bind_map[PTR_INCR].nCode[0] = (remap_lr_p2 ? RETRO_DEVICE_ID_JOYPAD_R2 : RETRO_DEVICE_ID_JOYPAD_R);
++      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_L;
+       bind_map[PTR_INCR].nCode[1] = 1;
+ 
+       /* After Burner, Thunder Blade, etc. */
+ 
+       bind_map[PTR_INCR].bii_name = "Missile";
+-      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_B;
++      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_A;
+       bind_map[PTR_INCR].nCode[1] = 0;
+ 
+       bind_map[PTR_INCR].bii_name = "Vulcan";
+-      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_A;
++      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_B;
+       bind_map[PTR_INCR].nCode[1] = 0;
+ 
+       bind_map[PTR_INCR].bii_name = "Cannon";
+-      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_A;
++      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_B;
+       bind_map[PTR_INCR].nCode[1] = 0;
+ 
+       /* OutRun, Chase HQ, Super Chase, Cyber Tank, Racing Beat, etc. */
+ 
+       bind_map[PTR_INCR].bii_name = "Accelerate";
+-      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_A;
++      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_B;
+       bind_map[PTR_INCR].nCode[1] = 0;
+ 
+       bind_map[PTR_INCR].bii_name = "P1 Accelerate";
+-      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_A;
++      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_B;
+       bind_map[PTR_INCR].nCode[1] = 0;
+ 
+       bind_map[PTR_INCR].bii_name = "P1 Accel";
+-      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_A;
++      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_B;
+       bind_map[PTR_INCR].nCode[1] = 0;
+ 
+       bind_map[PTR_INCR].bii_name = "Brake";
+-      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_B;
++      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_A;
+       bind_map[PTR_INCR].nCode[1] = 0;
+ 
+       bind_map[PTR_INCR].bii_name = "Gear";
+-      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_X;
++      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_R;
+       bind_map[PTR_INCR].nCode[1] = 0;
+ 
+       bind_map[PTR_INCR].bii_name = "Nitro";
+@@ -1307,15 +1307,15 @@ unsigned init_bind_map(key_map bind_map[], bool gamepad_controls, bool newgen_co
+       /* Quiz & Dragons, Capcom World 2, etc. */
+ 
+       bind_map[PTR_INCR].bii_name = "P1 Answer 1";
+-      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_A;
++      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_B;
+       bind_map[PTR_INCR].nCode[1] = 0;
+ 
+       bind_map[PTR_INCR].bii_name = "P1 Answer 2";
+-      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_B;
++      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_A;
+       bind_map[PTR_INCR].nCode[1] = 0;
+ 
+       bind_map[PTR_INCR].bii_name = "P1 Answer 3";
+-      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_X;
++      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_R;
+       bind_map[PTR_INCR].nCode[1] = 0;
+ 
+       bind_map[PTR_INCR].bii_name = "P1 Answer 4";
+@@ -1323,15 +1323,15 @@ unsigned init_bind_map(key_map bind_map[], bool gamepad_controls, bool newgen_co
+       bind_map[PTR_INCR].nCode[1] = 0;
+ 
+       bind_map[PTR_INCR].bii_name = "P2 Answer 1";
+-      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_A;
++      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_B;
+       bind_map[PTR_INCR].nCode[1] = 1;
+ 
+       bind_map[PTR_INCR].bii_name = "P2 Answer 2";
+-      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_B;
++      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_A;
+       bind_map[PTR_INCR].nCode[1] = 1;
+ 
+       bind_map[PTR_INCR].bii_name = "P2 Answer 3";
+-      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_X;
++      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_R;
+       bind_map[PTR_INCR].nCode[1] = 1;
+ 
+       bind_map[PTR_INCR].bii_name = "P2 Answer 4";
+@@ -1341,33 +1341,33 @@ unsigned init_bind_map(key_map bind_map[], bool gamepad_controls, bool newgen_co
+       /* Super Puzzle Fighter II Turbo */
+ 
+       bind_map[PTR_INCR].bii_name = "P1 Rotate Left";
+-      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_A;
++      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_B;
+       bind_map[PTR_INCR].nCode[1] = 0;
+ 
+       bind_map[PTR_INCR].bii_name = "P1 Rotate Right";
+-      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_B;
++      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_A;
+       bind_map[PTR_INCR].nCode[1] = 0;
+ 
+       bind_map[PTR_INCR].bii_name = "P2 Rotate Left";
+-      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_A;
++      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_B;
+       bind_map[PTR_INCR].nCode[1] = 1;
+ 
+       bind_map[PTR_INCR].bii_name = "P2 Rotate Right";
+-      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_B;
++      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_A;
+       bind_map[PTR_INCR].nCode[1] = 1;
+ 
+       /* Gals Pinball */
+ 
+       bind_map[PTR_INCR].bii_name = "Launch Ball / Tilt";
+-      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_A;
++      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_B;
+       bind_map[PTR_INCR].nCode[1] = 0;
+ 
+       bind_map[PTR_INCR].bii_name = "Left Flippers";
+-      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_B;
++      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_A;
+       bind_map[PTR_INCR].nCode[1] = 0;
+ 
+       bind_map[PTR_INCR].bii_name = "Right Flippers";
+-      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_X;
++      bind_map[PTR_INCR].nCode[0] = RETRO_DEVICE_ID_JOYPAD_R;
+       bind_map[PTR_INCR].nCode[1] = 0;
+ 
+    }
+-- 
+2.10.2
+
