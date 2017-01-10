@@ -4,7 +4,7 @@
 #
 ###############################################################################
 
-ATTRACTMODE_VERSION = v2.2.0
+ATTRACTMODE_VERSION = v2.2.1
 ATTRACTMODE_SITE = https://github.com/mickelson/attract.git
 ATTRACTMODE_SITE_METHOD = git
 ATTRACTMODE_DEPENDENCIES = sfml-pi ffmpeg
