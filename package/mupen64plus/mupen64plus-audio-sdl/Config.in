@@ -1,0 +1,6 @@
+config BR2_PACKAGE_MUPEN64PLUS_AUDIO_SDL
+	bool "mupen64plus-audio-sdl"
+	depends on BR2_PACKAGE_MUPEN64PLUS_CORE
+	help
+        Audio plugin for the Mupen64Plus v2.0 project, using SDL. This plugin
+        is based on the original jttl_audio plugin in Mupen64.

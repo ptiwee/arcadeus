@@ -1,0 +1,6 @@
+config BR2_PACKAGE_MUPEN64PLUS_INPUT_SDL
+	bool "mupen64plus-input-sdl"
+	depends on BR2_PACKAGE_MUPEN64PLUS_CORE
+	help
+        Input plugin for Mupen64Plus v2.0 project using SDL. This is derived
+        from the original Mupen64 blight_input plugin.

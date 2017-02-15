@@ -1,0 +1,32 @@
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index aed34c4..392da90 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -1,5 +1,6 @@
+ cmake_minimum_required(VERSION 2.6)
+ 
++option(RPI "Set to ON if targeting a RPI device" ${RPI})
+ option(GLES2 "Set to ON if targeting a GLES2 device" ${GLES2})
+ option(PANDORA "Set to ON if targeting an OpenPandora" ${PANDORA})
+ option(MUPENPLUSAPI "Set to ON for Mupen64Plus plugin" ${MUPENPLUSAPI})
+@@ -63,7 +64,7 @@ set(GLideN64_SOURCES
+ 
+ #check if we're running on Raspberry Pi
+ MESSAGE("Looking for bcm_host.h")
+-if(EXISTS "/opt/vc/include/bcm_host.h")
++if(RPI)
+   MESSAGE("bcm_host.h found")
+   set(BCMHOST ON)
+   set(GLES2 ON)
+@@ -81,9 +82,9 @@ if(EXISTS "/opt/vc/include/bcm_host.h")
+     "/opt/vc/lib"
+     "/opt/vc/lib/GL"
+   )
+-else(EXISTS "/opt/vc/include/bcm_host.h")
++else(RPI)
+   MESSAGE("bcm_host.h not found")
+-endif(EXISTS "/opt/vc/include/bcm_host.h")
++endif(RPI)
+ 
+ if(MUPENPLUSAPI)
+   add_definitions(

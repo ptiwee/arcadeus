@@ -3,6 +3,10 @@ menu "Target packages"
 	source "package/busybox/Config.in"
 	source "package/skeleton/Config.in"
 
+menu "Mupen64Plus"
+    source "package/mupen64plus/Config.in"
+endmenu
+
 menu "Audio and video applications"
 	source "package/alsa-utils/Config.in"
 	source "package/aumix/Config.in"

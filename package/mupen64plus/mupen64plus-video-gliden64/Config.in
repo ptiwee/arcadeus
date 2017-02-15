@@ -1,0 +1,6 @@
+config BR2_PACKAGE_MUPEN64PLUS_VIDEO_GLIDEN64
+	bool "mupen64plus-video-gliden64"
+	depends on BR2_PACKAGE_MUPEN64PLUS_CORE
+    select BR2_PACKAGE_FREETYPE
+	help
+        A new generation, open-source graphics plugin for N64 emulators.

@@ -1,0 +1,36 @@
+################################################################################
+#
+# mupen64plus-video-gliden64
+#
+################################################################################
+
+MUPEN64PLUS_VIDEO_GLIDEN64_VERSION = Public_Release_2_0
+MUPEN64PLUS_VIDEO_GLIDEN64_SITE = https://github.com/gonetz/GLideN64.git
+MUPEN64PLUS_VIDEO_GLIDEN64_SITE_METHOD = git
+MUPEN64PLUS_VIDEO_GLIDEN64_DEPENDENCIES = mupen64plus-core freetype
+MUPEN64PLUS_VIDEO_GLIDEN64_SUBDIR = src/
+
+MUPEN64PLUS_VIDEO_GLIDEN64_CONF_OPTS += -DVEC4_OPT=On
+MUPEN64PLUS_VIDEO_GLIDEN64_CONF_OPTS += -DMUPENPLUSAPI=On
+MUPEN64PLUS_VIDEO_GLIDEN64_CONF_OPTS += -DCMAKE_VERBOSE_MAKEFILE=On
+
+ifeq ($(BR2_ARM_CPU_HAS_NEON),y)
+MUPEN64PLUS_VIDEO_GLIDEN64_CONF_OPTS += -DNEON_OPT=On
+endif
+
+ifeq ($(BR2_PACKAGE_RPI_USERLAND),y)
+MUPEN64PLUS_VIDEO_GLIDEN64_CONF_OPTS += -DRPI=On
+endif
+
+define MUPEN64PLUS_VIDEO_GLIDEN64_GET_REVISION
+	$(@D)/src/getRevision.sh
+endef
+
+MUPEN64PLUS_VIDEO_GLIDEN64_PRE_BUILD_HOOKS += MUPEN64PLUS_VIDEO_GLIDEN64_GET_REVISION
+
+define MUPEN64PLUS_VIDEO_GLIDEN64_INSTALL_TARGET_CMDS
+	$(INSTALL) -m 0644 -D $(@D)/src/plugin/release/mupen64plus-video-GLideN64.so \
+		$(TARGET_DIR)/usr/lib/mupen64plus/	
+endef
+
+$(eval $(cmake-package))
