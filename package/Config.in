@@ -3,6 +3,10 @@ menu "Target packages"
 	source "package/busybox/Config.in"
 	source "package/skeleton/Config.in"
 
+menu "Libretro"
+    source "package/libretro/Config.in"
+endmenu
+
 menu "Mupen64Plus"
     source "package/mupen64plus/Config.in"
 endmenu

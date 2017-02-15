@@ -1,0 +1,5 @@
+config BR2_PACKAGE_LIBRETRO_FBA
+	bool "libretro-fba"
+	depends on BR2_PACKAGE_RETROARCH
+    help
+        Port of Final Burn Alpha to Libretro (v0.2.97.38).

@@ -1,0 +1,5 @@
+config BR2_PACKAGE_LIBRETRO_GPSP
+	bool "libretro-gpsp"
+	depends on BR2_PACKAGE_RETROARCH
+    help
+        gpSP for libretro.

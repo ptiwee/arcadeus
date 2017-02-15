@@ -1,0 +1,5 @@
+config BR2_PACKAGE_LIBRETRO_POCKETSNES
+	bool "libretro-pocketsnes"
+	depends on BR2_PACKAGE_RETROARCH
+    help
+        Snes9x 2002. Port of SNES9x 1.39 for libretro (was previously called PocketSNES). Heavily optimized for ARM.
