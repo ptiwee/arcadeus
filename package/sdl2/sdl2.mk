@@ -19,11 +19,23 @@ SDL2_CONF_OPTS += \
 	--disable-dbus \
 	--disable-pulseaudio \
 	--disable-video-opengl \
-	--disable-video-opengles \
 	--disable-video-wayland
+
+# Enable raspberry specific code
+ifeq ($(BR2_PACKAGE_RPI_USERLAND),y)
+SDL2_DEPENDENCIES += rpi-userland libegl
+SDL2_CONF_OPTS += --host=none-raspberry-linux
+endif
 
 # We must enable static build to get compilation successful.
 SDL2_CONF_OPTS += --enable-static
+
+ifeq ($(BR2_PACKAGE_HAS_LIBGLES),y)
+SDL2_DEPENDENCIES += libgles
+SDL2_CONF_OPTS += --enable-opengles
+else
+SDL2_CONF_OPTS += --disable-opengles
+endif
 
 ifeq ($(BR2_PACKAGE_HAS_UDEV),y)
 SDL2_DEPENDENCIES += udev

@@ -1,0 +1,23 @@
+--- SDL2-2.0.4/src/video/raspberry/SDL_rpivideo.c	2016-01-02 12:56:31.000000000 -0700
++++ mysdl/src/video/raspberry/SDL_rpivideo.c	2016-05-31 09:01:15.596636362 -0600
+@@ -235,18 +235,14 @@
+     display = SDL_GetDisplayForWindow(window);
+     displaydata = (SDL_DisplayData *) display->driverdata;
+ 
+-    /* Windows have one size for now */
+-    window->w = display->desktop_mode.w;
+-    window->h = display->desktop_mode.h;
+-
+     /* OpenGL ES is the law here, buddy */
+     window->flags |= SDL_WINDOW_OPENGL;
+ 
+     /* Create a dispman element and associate a window to it */
+     dst_rect.x = 0;
+     dst_rect.y = 0;
+-    dst_rect.width = window->w;
+-    dst_rect.height = window->h;
++    dst_rect.width = display->desktop_mode.w;
++    dst_rect.height = display->desktop_mode.h;
+ 
+     src_rect.x = 0;
+     src_rect.y = 0;
