@@ -1,0 +1,10 @@
+config BR2_PACKAGE_SFML
+	bool "sfml"
+	depends on BR2_PACKAGE_HAS_UDEV
+    select BR2_PACKAGE_JPEG
+    select BR2_PACKAGE_OPENAL
+    select BR2_PACKAGE_FLAC
+    select BR2_PACKAGE_LIBVORBIS
+    select BR2_PACKAGE_FREETYPE
+	help
+        Simple and Fast Multimedia Library
