@@ -8,6 +8,7 @@ RETROARCH_VERSION = v1.3.6
 RETROARCH_SITE = https://github.com/libretro/RetroArch.git
 RETROARCH_SITE_METHOD = git
 RETROARCH_CONFIGURE_OPTS = --enable-udev
+RETROARCH_DEPENDENCIES += alsa-lib
 
 ifeq ($(BR2_PACKAGE_LIBRETRO_PLATFORM),"rpi3")
 RETROARCH_CONFIGURE_OPTS += --enable-neon --enable-floathard --enable-dispmanx

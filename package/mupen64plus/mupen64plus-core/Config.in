@@ -3,5 +3,6 @@ config BR2_PACKAGE_MUPEN64PLUS_CORE
     select BR2_PACKAGE_ZLIB
     select BR2_PACKAGE_LIBPNG
     select BR2_PACKAGE_SDL2
+    select BR2_PACKAGE_ALSA_LIB
 	help
         Core module of the Mupen64Plus project
