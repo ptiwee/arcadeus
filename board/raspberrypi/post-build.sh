@@ -12,4 +12,4 @@ fi
 
 # Add USB to fstab
 sed -i '/^\/dev\/sda1/d' ${TARGET_DIR}/etc/fstab
-echo '/dev/sda1\t/mnt\tvfat\trw,sync\t0\t0' >> ${TARGET_DIR}/etc/fstab
+echo -e '/dev/sda1\t/mnt\tvfat\trw,sync\t0\t0' >> ${TARGET_DIR}/etc/fstab
